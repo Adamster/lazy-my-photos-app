@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:user="clr-namespace:lazy_my_photos_app.ViewModel.User"
              x:Class="lazy_my_photos_app.View.User.LoginPage"
+             x:DataType="user:LoginViewModel"
              Title="Login">
     <ScrollView>
         <Grid Padding="20" RowSpacing="10">
@@ -38,7 +40,7 @@
 
                 <Label Text="Don't have an account? " HorizontalOptions="End" VerticalOptions="Center" />
 
-                <Button Text="Register"  Grid.Column="1" />
+                <Button Text="Register" Command="{Binding RegisterCommand}"  Grid.Column="1" />
             </Grid>
         </Grid>
     </ScrollView>
