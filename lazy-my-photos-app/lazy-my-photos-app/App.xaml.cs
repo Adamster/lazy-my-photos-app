@@ -1,4 +1,6 @@
-﻿namespace lazy_my_photos_app;
+﻿using Microsoft.Maui.Controls;
+
+namespace lazy_my_photos_app;
 
 public partial class App : Application
 {
