@@ -11,7 +11,7 @@ public static class ApiServicesContainerExtensions
         var refitSettings = new RefitSettings();
         mauiAppBuilder.Services
             .AddRefitClient<IUserApi>(refitSettings)
-            .ConfigureHttpClient(cc => cc.BaseAddress = new Uri("https://localhost:7258"));
+            .ConfigureHttpClient(cc => cc.BaseAddress = new Uri("https://lazy-photo-api.azurewebsites.net"));
 
         //TODO: replace with value from settings
 

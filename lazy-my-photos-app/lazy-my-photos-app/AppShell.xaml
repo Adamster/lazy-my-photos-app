@@ -5,11 +5,29 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view1="clr-namespace:Lazy.MyPhotos.App.View"
+    xmlns:search="clr-namespace:Lazy.MyPhotos.App.View.Search"
+    xmlns:collections="clr-namespace:Lazy.MyPhotos.App.View.Collections"
+    xmlns:memories="clr-namespace:Lazy.MyPhotos.App.View.Memories"
+    xmlns:photos="clr-namespace:Lazy.MyPhotos.App.View.Photos"
     Shell.FlyoutBehavior="Disabled"
-    Title="lazy_my_photos_app">
-
-    <ShellContent
-        ContentTemplate="{DataTemplate view1:MainPage}"
-        Route="MainPage" />
+    Title="Lazy Photos">
+    <TabBar>
+        <ShellContent
+            Title="Photos"
+            ContentTemplate="{DataTemplate photos:PhotoPage}"
+            Icon="icon_photo" />
+        <ShellContent
+            Title="Memories"
+            ContentTemplate="{DataTemplate memories:MemoriesPage}"
+            Icon="icon_memories" />
+        <ShellContent
+            Title="Collections"
+            ContentTemplate="{DataTemplate collections:CollectionsPage}"
+            Icon="icon_collection" />
+        <ShellContent
+            Title="Search"
+            ContentTemplate="{DataTemplate search:SearchPage}"
+            Icon="icon_search" />
+    </TabBar>
 
 </Shell>

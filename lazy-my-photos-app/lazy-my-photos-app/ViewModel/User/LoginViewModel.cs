@@ -3,7 +3,11 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices;
+using Lazy.MyPhotos.App.Messages.User;
+using Lazy.MyPhotos.App.Services;
+using Lazy.MyPhotos.App.View;
 using Lazy.MyPhotos.App.View.User;
 using Lazy.MyPhotos.Shared.Models.User;
 
@@ -48,6 +52,11 @@ public partial class LoginViewModel
 
 
         Application.Current?.MainPage?.DisplayAlert("Login", message, "ok");
+
+        if (loginResponse is {IsSuccessStatusCode: true, Content: not null})
+        {
+            WeakReferenceMessenger.Default.Send(new UserLoggedInMessage(loginResponse.Content));
+        }
     }
 
     [RelayCommand]

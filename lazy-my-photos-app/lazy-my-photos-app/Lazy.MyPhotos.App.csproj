@@ -98,6 +98,7 @@
 
 	<ItemGroup>
 	  <None Remove="appSettings.json" />
+	  <None Remove="Resources\Images\icon_memories.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -120,6 +121,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="View\Collections\CollectionsPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Memories\MemoriesPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Photos\PhotoPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Search\SearchPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="View\User\LoginPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
