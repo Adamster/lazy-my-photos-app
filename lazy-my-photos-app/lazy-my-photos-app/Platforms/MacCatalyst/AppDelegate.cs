@@ -1,10 +1,12 @@
 ﻿using Foundation;
 
-namespace lazy_my_photos_app
+namespace Lazy.MyPhotos.App.Platforms.MacCatalyst;
+
+[Register("AppDelegate")]
+public class AppDelegate : MauiUIApplicationDelegate
 {
-    [Register("AppDelegate")]
-    public class AppDelegate : MauiUIApplicationDelegate
+    protected override MauiApp CreateMauiApp()
     {
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        return MauiProgram.CreateMauiApp();
     }
 }

@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Shell
-    x:Class="lazy_my_photos_app.AppShell"
+    x:Class="Lazy.MyPhotos.App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:lazy_my_photos_app"
-    xmlns:view="clr-namespace:lazy_my_photos_app.View"
+    xmlns:view1="clr-namespace:Lazy.MyPhotos.App.View"
     Shell.FlyoutBehavior="Disabled"
-    NavBarIsVisible="False"
-    NavBarHasShadow="False"
     Title="lazy_my_photos_app">
 
     <ShellContent
-        ContentTemplate="{DataTemplate view:MainPage}"
+        ContentTemplate="{DataTemplate view1:MainPage}"
         Route="MainPage" />
 
 </Shell>

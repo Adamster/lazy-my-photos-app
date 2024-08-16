@@ -1,8 +1,9 @@
-﻿using lazy_my_photos_app.View;
-using lazy_my_photos_app.View.User;
-using Microsoft.Maui.Controls;
+﻿
 
-namespace lazy_my_photos_app;
+using Lazy.MyPhotos.App.View;
+using Lazy.MyPhotos.App.View.User;
+
+namespace Lazy.MyPhotos.App;
 
 public partial class AppShell : Shell
 {

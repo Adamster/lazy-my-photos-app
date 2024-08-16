@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Lazy.MyPhotos.App.View.User;
 
-namespace lazy_my_photos_app.ViewModel.User
+
+namespace Lazy.MyPhotos.App.ViewModel.User;
+
+[ObservableObject]
+public partial class LoginViewModel
 {
-    [ObservableObject]
-    public partial class LoginViewModel
+    [RelayCommand]
+    private async Task Register()
     {
-        [RelayCommand]
-        async Task Register()
-        {
-            await Shell.Current.GoToAsync("RegisterPage");
-        }
-
+        await Shell.Current.GoToAsync(nameof(RegisterPage));
     }
 }

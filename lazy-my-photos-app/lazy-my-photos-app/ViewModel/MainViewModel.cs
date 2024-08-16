@@ -1,20 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Lazy.MyPhotos.App.View.User;
 
-namespace lazy_my_photos_app.ViewModel;
+
+namespace Lazy.MyPhotos.App.ViewModel;
 
 [ObservableObject]
 public partial class MainViewModel
 {
     [RelayCommand]
-    async Task Register()
+    private async Task Register()
     {
-        await Shell.Current.GoToAsync("RegisterPage");
+        await Shell.Current.GoToAsync(nameof(RegisterPage));
     }
 
     [RelayCommand]
-    async Task Login()
+    private async Task Login()
     {
-        await Shell.Current.GoToAsync("LoginPage");
+        await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 }

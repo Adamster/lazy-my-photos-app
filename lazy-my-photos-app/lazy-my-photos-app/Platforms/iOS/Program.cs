@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace lazy_my_photos_app
+namespace Lazy.MyPhotos.App.Platforms.iOS
 {
     public class Program
     {

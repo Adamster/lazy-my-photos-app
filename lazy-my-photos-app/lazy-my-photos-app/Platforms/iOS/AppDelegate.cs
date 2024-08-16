@@ -1,6 +1,7 @@
 ﻿using Foundation;
+using Lazy.MyPhotos.App;
 
-namespace lazy_my_photos_app
+namespace Lazy.MyPhotos.App.Platforms.iOS
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

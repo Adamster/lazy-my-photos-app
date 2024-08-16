@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:user="clr-namespace:lazy_my_photos_app.ViewModel.User"
-             x:Class="lazy_my_photos_app.View.User.LoginPage"
-             x:DataType="user:LoginViewModel"
+             xmlns:user1="clr-namespace:Lazy.MyPhotos.App.ViewModel.User"
+             x:Class="Lazy.MyPhotos.App.View.User.LoginPage"
+             
              Title="Login">
+    <ContentPage.BindingContext>
+        <user1:LoginViewModel></user1:LoginViewModel>
+    </ContentPage.BindingContext>
     <ScrollView>
         <Grid Padding="20" RowSpacing="10">
             <Grid.RowDefinitions>
@@ -14,7 +18,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Label Text="Log In" FontSize="Large" HorizontalOptions="Center" Grid.Row="0" />
@@ -22,14 +26,14 @@
             <Entry Placeholder="Email" Keyboard="Email" Grid.Row="1" />
             <Entry Placeholder="Password" IsPassword="True" Grid.Row="2" />
 
-            <Button Text="Log In"  TextColor="White" Grid.Row="3" />
+            <Button Text="Log In" TextColor="White" Grid.Row="3" />
 
             <Label Text="Or" HorizontalOptions="Center" Grid.Row="4" />
 
             <StackLayout Orientation="Vertical" Grid.Row="5" Spacing="10" HorizontalOptions="Center">
-                <Button Text="Continue with Facebook" TextColor="White"  BackgroundColor="#3b5998" />
-                <Button Text="Continue with Google" TextColor="White"  BackgroundColor="#db4437" />
-                <Button Text="Continue with Apple" TextColor="White"  BackgroundColor="Black" />
+                <Button Text="Continue with Facebook" TextColor="White" BackgroundColor="#3b5998" />
+                <Button Text="Continue with Google" TextColor="White" BackgroundColor="#db4437" />
+                <Button Text="Continue with Apple" TextColor="White" BackgroundColor="Black" />
             </StackLayout>
 
             <Grid Grid.Row="6" ColumnSpacing="15" HorizontalOptions="Center">
@@ -40,7 +44,7 @@
 
                 <Label Text="Don't have an account? " HorizontalOptions="End" VerticalOptions="Center" />
 
-                <Button Text="Register" Command="{Binding RegisterCommand}"  Grid.Column="1" />
+                <Button Text="Register" Command="{Binding RegisterCommand}" Grid.Column="1" />
             </Grid>
         </Grid>
     </ScrollView>

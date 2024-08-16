@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
+﻿using Lazy.MyPhotos.App.Extensions;
+using Microsoft.Extensions.Logging;
 
-namespace lazy_my_photos_app;
+namespace Lazy.MyPhotos.App;
 
 public static class MauiProgram
 {
@@ -15,7 +14,8 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+            })
+            .RegisterViewModels();
 
 #if DEBUG
         builder.Logging.AddDebug();
