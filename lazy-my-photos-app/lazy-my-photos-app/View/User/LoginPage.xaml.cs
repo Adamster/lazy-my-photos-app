@@ -4,8 +4,9 @@ namespace Lazy.MyPhotos.App.View.User;
 
 public partial class LoginPage : ContentPage
 {
-    public LoginPage()
+    public LoginPage(LoginViewModel vm)
     {
         InitializeComponent();
+        BindingContext = vm;
     }
 }

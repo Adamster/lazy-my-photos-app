@@ -2,13 +2,8 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:user1="clr-namespace:Lazy.MyPhotos.App.ViewModel.User"
              x:Class="Lazy.MyPhotos.App.View.User.LoginPage"
-             
              Title="Login">
-    <ContentPage.BindingContext>
-        <user1:LoginViewModel></user1:LoginViewModel>
-    </ContentPage.BindingContext>
     <ScrollView>
         <Grid Padding="20" RowSpacing="10">
             <Grid.RowDefinitions>
@@ -23,10 +18,10 @@
 
             <Label Text="Log In" FontSize="Large" HorizontalOptions="Center" Grid.Row="0" />
 
-            <Entry Placeholder="Email" Keyboard="Email" Grid.Row="1" />
-            <Entry Placeholder="Password" IsPassword="True" Grid.Row="2" />
+            <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" Grid.Row="1" />
+            <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Grid.Row="2" />
 
-            <Button Text="Log In" TextColor="White" Grid.Row="3" />
+            <Button Text="Log In" Command="{Binding LoginCommand}" TextColor="White" Grid.Row="3" />
 
             <Label Text="Or" HorizontalOptions="Center" Grid.Row="4" />
 

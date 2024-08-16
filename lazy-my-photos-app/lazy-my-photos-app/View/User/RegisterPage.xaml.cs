@@ -6,8 +6,9 @@ namespace Lazy.MyPhotos.App.View.User;
 
 public partial class RegisterPage : ContentPage
 {
-    public RegisterPage()
+    public RegisterPage(RegisterViewModel vm)
     {
         InitializeComponent();
+        BindingContext = vm;
     }
 }

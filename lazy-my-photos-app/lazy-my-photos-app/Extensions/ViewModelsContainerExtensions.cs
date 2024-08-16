@@ -5,7 +5,7 @@ using Lazy.MyPhotos.App.ViewModel.User;
 
 namespace Lazy.MyPhotos.App.Extensions;
 
-public static class ViewModelsExtensions
+public static class ViewModelsContainerExtensions
 {
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {

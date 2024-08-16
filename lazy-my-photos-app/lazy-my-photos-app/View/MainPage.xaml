@@ -4,7 +4,7 @@
              xmlns:viewModel1="clr-namespace:Lazy.MyPhotos.App.ViewModel"
              x:Class="Lazy.MyPhotos.App.View.MainPage">
     <ContentPage.BindingContext>
-        <viewModel1:MainViewModel></viewModel1:MainViewModel>
+        <viewModel1:MainViewModel/>
     </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout
