@@ -1,7 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices;
 using Lazy.MyPhotos.App.View.User;
@@ -52,7 +49,6 @@ public partial class RegisterViewModel
         string message;
         if (result.IsSuccessStatusCode)
         {
-
             message = $"Your account was created {result}";
 
         }

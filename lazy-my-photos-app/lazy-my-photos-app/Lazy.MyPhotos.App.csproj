@@ -98,6 +98,7 @@
 
 	<ItemGroup>
 	  <None Remove="appSettings.json" />
+	  <None Remove="Resources\Images\icon_close.png" />
 	  <None Remove="Resources\Images\icon_memories.svg" />
 	</ItemGroup>
 
@@ -121,6 +122,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="Modules\User\Mvvm\Pages\Modals\ProfileModalPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="View\Collections\CollectionsPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -151,7 +155,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Model\" />
+	  <Folder Include="Modules\Photo\Handlers\" />
 	</ItemGroup>
 
 </Project>

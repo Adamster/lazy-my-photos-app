@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Shell
     x:Class="Lazy.MyPhotos.App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -9,8 +8,42 @@
     xmlns:collections="clr-namespace:Lazy.MyPhotos.App.View.Collections"
     xmlns:memories="clr-namespace:Lazy.MyPhotos.App.View.Memories"
     xmlns:photos="clr-namespace:Lazy.MyPhotos.App.View.Photos"
-    Shell.FlyoutBehavior="Disabled"
-    Title="Lazy Photos">
+    xmlns:viewModel="clr-namespace:Lazy.MyPhotos.App.ViewModel"
+    Shell.FlyoutBehavior="Disabled">
+    <Shell.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Add a logo or app title on the left -->
+            <Label 
+                Text="Lazy Photos"
+                FontAttributes="Bold"
+                FontSize="18"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"/>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" Margin="0,0,16,0">
+                <Label 
+                       Text="{Binding UserName}"
+                       FontAttributes="Bold"
+                       FontSize="12"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                />
+                <!-- Add user profile icon or other action items on the right -->
+                <ImageButton 
+                    Source="dotnet_bot"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding ProfileCommand}" />
+            </StackLayout>
+            
+        </Grid>
+    </Shell.TitleView>
     <TabBar>
         <ShellContent
             Title="Photos"

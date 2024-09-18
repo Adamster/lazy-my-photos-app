@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lazy.MyPhotos.App.Modules.User.Mvvm.Pages.Modals.ProfileModalPage"
+             BackgroundColor="#742D0C98"
+             Padding="20">
+    <Frame HasShadow="False"  Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <!-- Close Button and Google Label -->
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ImageButton Source="icon_close.png" 
+                         WidthRequest="30" HeightRequest="30" 
+                         Command="{Binding CloseCommand}" />
+
+                <Label Text="Lazy Inc."
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Grid.Column="1"/>
+            </Grid>
+
+            <!-- Profile Section -->
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="profile_image.png" WidthRequest="50" HeightRequest="50" />
+                <VerticalStackLayout>
+                    <Label Text="Adamster Domi"
+                       FontSize="18"
+                        />
+                    <Label Text="adamsterdomi@gmail.com"
+                       FontSize="14"
+                       Style="{StaticResource SubHeadline}"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <!-- Button: Manage Account -->
+            <Button Text="Manage your Lazy Account"
+                BackgroundColor="#444"
+                CornerRadius="10"
+                HeightRequest="45" />
+
+            <!-- Backup Status -->
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="backup_icon.png" WidthRequest="24" HeightRequest="24" />
+                <Label Text="Backup is off"
+                    />
+            </HorizontalStackLayout>
+            <Label Text="Keep your photos safe by backing them up to your Lazy Account."
+                   Style="{StaticResource SubHeadline}"
+               FontSize="12" />
+            <Button Text="Turn on backup"
+                BackgroundColor="#444"
+                CornerRadius="10"
+                HeightRequest="45" />
+
+            <!-- Storage Status -->
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="warning_icon.png" WidthRequest="24" HeightRequest="24" />
+                <Label Text="86% of storage used"
+                    />
+            </HorizontalStackLayout>
+            <ProgressBar Progress="0.86" HeightRequest="5" />
+            <Label Text="88.69 GB of 102 GB used"
+                   Style="{StaticResource SubHeadline}"
+               FontSize="12" />
+            <Button Text="Manage storage"
+                BackgroundColor="#444"
+                CornerRadius="10"
+                HeightRequest="45" />
+
+            <!-- Other Options -->
+            <Button Text="Review out-of-sync changes"
+                HorizontalOptions="Start" />
+            <Button Text="Your data in Lazy Photos"
+                HorizontalOptions="Start" />
+            <Button Text="Lazy Photos settings"
+                HorizontalOptions="Start" />
+            <Button Text="Logout"
+                Command="{Binding LogoutCommand}"
+                HorizontalOptions="Start" />
+
+            <!-- Footer Links -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label Text="Privacy"  Style="{StaticResource SubHeadline}"  FontSize="12"/>
+                <Label Text="•" Style="{StaticResource SubHeadline}" FontSize="12"/>
+                <Label Text="Terms"  Style="{StaticResource SubHeadline}"  FontSize="12"/>
+                <Label Text="•"  Style="{StaticResource SubHeadline}"  FontSize="12"/>
+                <Label Text="Policy"  Style="{StaticResource SubHeadline}" FontSize="12"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Frame>
+</ContentPage>

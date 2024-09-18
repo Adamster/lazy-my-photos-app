@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Lazy.MyPhotos.App.Extensions;
-using Lazy.MyPhotos.App.Infrastructure.Extensions;
+using Lazy.MyPhotos.App.Infrastructure.ApiServices;
+using Lazy.MyPhotos.App.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 
 namespace Lazy.MyPhotos.App;
@@ -20,7 +21,8 @@ public static class MauiProgram
             })
             .RegisterViews()
             .RegisterViewModels()
-            .RegisterApiServices();
+            .RegisterApiServices()
+            .RegisterServices();
 
 #if DEBUG
         builder.Logging.AddDebug();

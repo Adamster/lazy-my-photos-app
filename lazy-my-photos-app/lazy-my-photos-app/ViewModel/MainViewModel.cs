@@ -8,6 +8,9 @@ namespace Lazy.MyPhotos.App.ViewModel;
 [ObservableObject]
 public partial class MainViewModel
 {
+
+
+
     [RelayCommand]
     private async Task Register()
     {
