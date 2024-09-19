@@ -2,8 +2,14 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Models"
+             xmlns:converters="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Converters"
              x:Class="Lazy.MyPhotos.App.Modules.Photo.Mvvm.Views.PhotoGalleryView"
              >
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:NullToImageConverter x:Key="NullToImageConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Select" Order="Primary" />
         <ToolbarItem IconImageSource="menu_icon.png" Order="Secondary" />
@@ -22,16 +28,14 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:PhotoItem">
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="{Binding Filename}"
-                               HorizontalOptions="Center"/>
                     <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
-                        <Image Source="{Binding Image}" 
+                        <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
                                Aspect="AspectFill" 
                                HeightRequest="100" 
-                               WidthRequest="100" />
+                               WidthRequest="100">
+                          
+                        </Image>
                     </Frame>
-                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
