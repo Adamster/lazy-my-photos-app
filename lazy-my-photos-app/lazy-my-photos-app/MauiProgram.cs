@@ -22,7 +22,8 @@ public static class MauiProgram
             .RegisterViews()
             .RegisterViewModels()
             .RegisterApiServices()
-            .RegisterServices();
+            .RegisterServices()
+            .RegisterRoutes();
 
 #if DEBUG
         builder.Logging.AddDebug();

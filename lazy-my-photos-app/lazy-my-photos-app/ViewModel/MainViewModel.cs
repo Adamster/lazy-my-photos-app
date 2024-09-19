@@ -8,13 +8,11 @@ namespace Lazy.MyPhotos.App.ViewModel;
 [ObservableObject]
 public partial class MainViewModel
 {
-
-
-
     [RelayCommand]
     private async Task Register()
     {
-        await Shell.Current.GoToAsync(nameof(RegisterPage));
+        var registerPage = Application.Current.Handler.MauiContext.Services.GetService<RegisterPage>();
+        App.Current.MainPage = registerPage;
     }
 
     [RelayCommand]

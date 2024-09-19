@@ -28,11 +28,17 @@ public partial class LoginViewModel(IUserApi userApi)
         {
             WeakReferenceMessenger.Default.Send(new UserLoggedInMessage(loginResponse.Content));
         }
+        else
+        {
+           var  message = $"Login failed: {loginResponse?.Error?.Content}";
+            Application.Current?.MainPage?.DisplayAlert("Login", message, "ok");
+        }
     }
 
     [RelayCommand]
     private async Task Register()
     {
-        await Shell.Current.GoToAsync(nameof(RegisterPage));
+        var registerPage = Application.Current.Handler.MauiContext.Services.GetService<RegisterPage>();
+        App.Current.MainPage = registerPage;
     }
 }

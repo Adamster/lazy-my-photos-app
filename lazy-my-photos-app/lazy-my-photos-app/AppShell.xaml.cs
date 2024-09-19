@@ -14,11 +14,7 @@ public partial class AppShell : Shell
 
         BindingContext = vm;
 
-        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-
-        Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
-
-        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+      
 
     }
 }
