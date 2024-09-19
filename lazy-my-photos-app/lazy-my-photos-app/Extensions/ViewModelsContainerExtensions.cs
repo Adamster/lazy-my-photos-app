@@ -1,5 +1,6 @@
 ﻿
 
+using Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 using Lazy.MyPhotos.App.ViewModel;
 using Lazy.MyPhotos.App.ViewModel.User;
 
@@ -14,6 +15,10 @@ public static class ViewModelsContainerExtensions
         //user
         mauiAppBuilder.Services.AddSingleton<LoginViewModel>();
         mauiAppBuilder.Services.AddSingleton<RegisterViewModel>();
+        
+
+        //photo
+        mauiAppBuilder.Services.AddSingleton<PhotoGalleryViewModel>();
 
 
         return mauiAppBuilder;

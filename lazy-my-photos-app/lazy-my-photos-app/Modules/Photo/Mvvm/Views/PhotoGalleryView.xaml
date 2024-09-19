@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Models"
+             x:Class="Lazy.MyPhotos.App.Modules.Photo.Mvvm.Views.PhotoGalleryView"
+             >
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Select" Order="Primary" />
+        <ToolbarItem IconImageSource="menu_icon.png" Order="Secondary" />
+    </ContentPage.ToolbarItems>-->
+
+    <VerticalStackLayout Padding="10" Spacing="15">
+<!-- Photo Gallery CollectionView -->
+        <CollectionView x:Name="GalleryCollectionView"
+                        ItemsSource="{Binding Photos}"
+                        SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" 
+                                 Span="4" 
+                                 VerticalItemSpacing="3" 
+                                 HorizontalItemSpacing="3"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PhotoItem">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding Filename}"
+                               HorizontalOptions="Center"/>
+                    <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
+                        <Image Source="{Binding Image}" 
+                               Aspect="AspectFill" 
+                               HeightRequest="100" 
+                               WidthRequest="100" />
+                    </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentView>

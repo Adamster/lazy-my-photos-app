@@ -16,6 +16,16 @@ public static class ApiServicesContainerExtensions
             .ConfigureHttpClient(cc => cc.BaseAddress = new Uri("https://lazy-photo-api.azurewebsites.net"))
             .AddHttpMessageHandler<AuthorizationHeaderHandler>();
 
+        mauiAppBuilder.Services
+            .AddRefitClient<IPhotoApi>(refitSettings)
+            .ConfigureHttpClient(cc => cc.BaseAddress = new Uri("https://lazy-photo-api.azurewebsites.net"))
+            .AddHttpMessageHandler<AuthorizationHeaderHandler>();
+
+        mauiAppBuilder.Services
+            .AddRefitClient<IPhotoContentApi>(refitSettings)
+            .ConfigureHttpClient(cc => cc.BaseAddress = new Uri("https://lazy-photo-api.azurewebsites.net"))
+            .AddHttpMessageHandler<AuthorizationHeaderHandler>();
+
         //TODO: replace with value from settings
 
         return mauiAppBuilder;

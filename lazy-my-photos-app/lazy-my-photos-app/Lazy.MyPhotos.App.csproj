@@ -122,6 +122,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="Modules\Photo\Mvvm\Views\PhotoGalleryView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Modules\User\Mvvm\Pages\Modals\ProfileModalPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
