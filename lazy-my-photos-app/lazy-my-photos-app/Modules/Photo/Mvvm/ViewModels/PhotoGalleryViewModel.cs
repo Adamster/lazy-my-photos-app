@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices;
 using Lazy.MyPhotos.App.Modules.Photo.Handlers.Interfaces;
 using Lazy.MyPhotos.App.Modules.Photo.Models;
@@ -47,6 +48,7 @@ public partial class PhotoGalleryViewModel
         _logger = logger;
     }
 
+    [RelayCommand]
     public async Task LoadPhotos()
     {
         _logger.LogInformation("Load photos called");

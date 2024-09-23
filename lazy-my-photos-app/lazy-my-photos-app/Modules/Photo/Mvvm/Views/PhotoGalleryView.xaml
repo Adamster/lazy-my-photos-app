@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Models"
              xmlns:converters="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Converters"
+             xmlns:viewModels="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels"
              x:Class="Lazy.MyPhotos.App.Modules.Photo.Mvvm.Views.PhotoGalleryView"
              >
     <ContentView.Resources>
@@ -17,10 +18,12 @@
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="15">
             <!-- Photo Gallery CollectionView -->
-            <CollectionView x:Name="GalleryCollectionView"
+            <CollectionView x:Name="GalleryCollectionView" x:DataType="viewModels:PhotoGalleryViewModel"
                         ItemsSource="{Binding Photos}"
-                        RemainingItemsThresholdReached="GalleryCollectionView_OnRemainingItemsThresholdReached"
-                        RemainingItemsThreshold="1"
+                        
+                        RemainingItemsThresholdReachedCommand="{Binding LoadPhotosCommand}"
+                        RemainingItemsThreshold="5"
+                        VerticalScrollBarVisibility="Always"
                         SelectionMode="Single">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" 

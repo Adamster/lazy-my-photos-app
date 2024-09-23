@@ -14,9 +14,9 @@ public partial class PhotoGalleryView : ContentView
        BindingContext = _vm;
     }
 
-    private async void GalleryCollectionView_OnRemainingItemsThresholdReached(object? sender, EventArgs e)
-    {
-        var vm = BindingContext as PhotoGalleryViewModel;
-        await vm!.LoadPhotos();
-    }
+    //private async void GalleryCollectionView_OnRemainingItemsThresholdReached(object? sender, EventArgs e)
+    //{
+    //    var vm = BindingContext as PhotoGalleryViewModel;
+    //    await vm!.LoadPhotos();
+    //}
 }
