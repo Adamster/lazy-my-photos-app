@@ -1,3 +1,4 @@
+
 using Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 
 namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.Views;
@@ -13,9 +14,9 @@ public partial class PhotoGalleryView : ContentView
        BindingContext = _vm;
     }
 
-    protected override async void OnParentSet()
+    private async void GalleryCollectionView_OnRemainingItemsThresholdReached(object? sender, EventArgs e)
     {
-        base.OnParentSet();
-        await _vm.LoadPhotos();
+        var vm = BindingContext as PhotoGalleryViewModel;
+        await vm!.LoadPhotos();
     }
 }

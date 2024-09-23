@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Lazy.MyPhotos.App.Modules.Photo.Models;
 
 
-public record PhotoItem(long Id, string Filename) : INotifyPropertyChanged
+public record PhotoItem(long Id, string Filename, PhotoItemType PhotoItemType) : INotifyPropertyChanged
 {
     private ImageSource? _image;
 
@@ -29,4 +29,10 @@ public record PhotoItem(long Id, string Filename) : INotifyPropertyChanged
         OnPropertyChanged(propertyName);
         return true;
     }
+}
+
+public enum PhotoItemType
+{
+    Local = 1,
+    Cloud = 2
 }

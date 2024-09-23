@@ -14,30 +14,33 @@
         <ToolbarItem Text="Select" Order="Primary" />
         <ToolbarItem IconImageSource="menu_icon.png" Order="Secondary" />
     </ContentPage.ToolbarItems>-->
-
-    <VerticalStackLayout Padding="10" Spacing="15">
-<!-- Photo Gallery CollectionView -->
-        <CollectionView x:Name="GalleryCollectionView"
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="15">
+            <!-- Photo Gallery CollectionView -->
+            <CollectionView x:Name="GalleryCollectionView"
                         ItemsSource="{Binding Photos}"
+                        RemainingItemsThresholdReached="GalleryCollectionView_OnRemainingItemsThresholdReached"
+                        RemainingItemsThreshold="1"
                         SelectionMode="Single">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" 
-                                 Span="4" 
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                 Span="3" 
                                  VerticalItemSpacing="3" 
                                  HorizontalItemSpacing="3"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:PhotoItem">
-                    <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
-                        <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:PhotoItem">
+                        <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
+                            <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
                                Aspect="AspectFill" 
-                               HeightRequest="100" 
-                               WidthRequest="100">
-                          
-                        </Image>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+                               HeightRequest="250" 
+                               WidthRequest="250">
+
+                            </Image>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentView>

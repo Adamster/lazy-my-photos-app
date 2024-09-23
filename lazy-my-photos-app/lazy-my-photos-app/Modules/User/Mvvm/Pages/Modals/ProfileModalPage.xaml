@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lazy.MyPhotos.App.Modules.User.Mvvm.Pages.Modals.ProfileModalPage"
              BackgroundColor="#742D0C98"
-             Padding="20">
+             Padding="40">
     <Frame HasShadow="False"  Padding="20">
         <VerticalStackLayout Spacing="15">
             <!-- Close Button and Google Label -->

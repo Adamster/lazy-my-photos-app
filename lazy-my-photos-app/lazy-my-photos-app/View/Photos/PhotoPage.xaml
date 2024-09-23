@@ -8,5 +8,5 @@
     <ContentPage.BindingContext>
         <viewModel:PhotoViewModel/>
     </ContentPage.BindingContext>
-    <views:PhotoGalleryView/>
+    <views:PhotoGalleryView x:Name="GalleryView"/>
 </ContentPage>
