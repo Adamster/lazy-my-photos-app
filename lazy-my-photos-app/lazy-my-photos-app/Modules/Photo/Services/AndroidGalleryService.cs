@@ -1,5 +1,6 @@
-﻿
+﻿#if ANDROID
 using Android.Provider;
+#endif
 using Lazy.MyPhotos.Shared.Services.Interfaces;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 
@@ -39,4 +40,10 @@ public class AndroidGalleryService : IGalleryService
 #endif
         return photos;
     }
+
+    public IList<Stream> GetPhotoStreams(int currentPage, int pageSize)
+    {
+        throw new NotImplementedException();
+    }
+
 }

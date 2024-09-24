@@ -20,7 +20,7 @@
                         ItemsSource="{Binding Photos}"
                         
                         RemainingItemsThresholdReachedCommand="{Binding LoadPhotosCommand}"
-                        RemainingItemsThreshold="5"
+                        RemainingItemsThreshold="15"
                         VerticalScrollBarVisibility="Always"
                         SelectionMode="Single">
                 <CollectionView.ItemsLayout>
@@ -34,8 +34,8 @@
                         <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
                             <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
                                Aspect="AspectFill" 
-                               HeightRequest="250" 
-                               WidthRequest="250">
+                               HeightRequest="100" 
+                               WidthRequest="100">
 
                             </Image>
                         </Frame>
