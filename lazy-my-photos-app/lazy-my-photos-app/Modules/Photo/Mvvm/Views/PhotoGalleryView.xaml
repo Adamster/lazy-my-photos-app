@@ -15,8 +15,6 @@
         <ToolbarItem Text="Select" Order="Primary" />
         <ToolbarItem IconImageSource="menu_icon.png" Order="Secondary" />
     </ContentPage.ToolbarItems>-->
-    <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="15">
             <!-- Photo Gallery CollectionView -->
             <CollectionView x:Name="GalleryCollectionView" x:DataType="viewModels:PhotoGalleryViewModel"
                         ItemsSource="{Binding Photos}"
@@ -44,6 +42,4 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
 </ContentView>
