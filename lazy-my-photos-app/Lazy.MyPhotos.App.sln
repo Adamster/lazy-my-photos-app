@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazy.MyPhotos.App.Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazy.MyPhotos.Shared", "Lazy.MyPhotos.Shared\Lazy.MyPhotos.Shared.csproj", "{31524399-5734-4A90-AF24-2505C8F5D912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazy.MyPhotos.Persistence", "Lazy.MyPhotos.Persistance\Lazy.MyPhotos.Persistence.csproj", "{17D8A012-7CFE-41D4-B00E-A4C0DDB041A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazy.MyPhotos.Persistence", "Lazy.MyPhotos.Persistance\Lazy.MyPhotos.Persistence.csproj", "{17D8A012-7CFE-41D4-B00E-A4C0DDB041A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9F8C8410-DE03-4F54-9F1A-BC59FFD0D281}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

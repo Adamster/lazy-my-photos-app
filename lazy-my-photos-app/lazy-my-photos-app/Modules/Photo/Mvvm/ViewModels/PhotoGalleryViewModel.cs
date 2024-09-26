@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices;
+using Lazy.MyPhotos.App.Infrastructure.ApiServices.Models.Photo;
 using Lazy.MyPhotos.App.Modules.Photo.Handlers.Interfaces;
 using Lazy.MyPhotos.App.Modules.Photo.Models;
 using Lazy.MyPhotos.Shared.Services.Interfaces;
@@ -12,7 +13,7 @@ namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 [ObservableObject]
 public partial class PhotoGalleryViewModel
 {
-    private const int PageSize = 30;
+    private const int PageSize = 100;
     private int _currentPage = 0;
 
 
@@ -59,22 +60,16 @@ public partial class PhotoGalleryViewModel
 
         IsLoading = true;
 
-
-
-        var newPhotos = GetPhotosPage(_currentPage, PageSize);
-
+        IEnumerable<PhotoItem> newPhotos = await GetPhotosPage(_currentPage, PageSize);
 
         foreach (var photo in newPhotos)
         {
             Photos.Add(photo);
         }
 
-
         _currentPage++;
 
         IsLoading = false;
-
-
     }
 
     public async Task EnsurePermissionAccess()
@@ -88,17 +83,14 @@ public partial class PhotoGalleryViewModel
         }
     }
 
-    private IEnumerable<PhotoItem> GetPhotosPage(int currentPage, int pageSize)
+    private async Task<IEnumerable<PhotoItem>> GetPhotosPage(int currentPage, int pageSize)
     {
         _logger.LogInformation("Loading new page {0}", currentPage);
         var photoPage = new List<PhotoItem>();
 
-#if  ANDROID
-                GetPagedImagesAndroid(currentPage, pageSize, photoPage);
-#elif IOS
 
-        GetPagedImagesiOS(currentPage, pageSize, photoPage);
-#endif
+        await GetPagedImages(currentPage, pageSize, photoPage);
+
         return photoPage;
 
         //var photos = await _photoApi.GetPhotos();
@@ -111,21 +103,20 @@ public partial class PhotoGalleryViewModel
         //}
     }
 
-    private void GetPagedImagesiOS(int currentPage, int pageSize, List<PhotoItem> photoPage)
+    private async Task GetPagedImages(int currentPage, int pageSize, List<PhotoItem> photoPage)
     {
-        var photoStreams = _galleryService.GetPhotoStreams(currentPage, pageSize);
+        var photoStreams = await _galleryService.GetPhotoStreams(currentPage, pageSize, false);
 
         foreach (var photoStream in photoStreams)
         {
-            var tmpStream = new MemoryStream();
-            photoStream.CopyTo(tmpStream);
+            using var tmpStream = new MemoryStream();
+            await photoStream.CopyToAsync(tmpStream);
             var bytes = tmpStream.ToArray();
 
             var photoId = 0;
             var photoName = Path.GetRandomFileName();
             var photoItem = new PhotoItem(photoId, photoName, PhotoItemType.Local)
             {
-                
                 Image = ImageSource.FromStream(() => new MemoryStream(bytes))
             };
 
@@ -133,23 +124,7 @@ public partial class PhotoGalleryViewModel
         }
     }
 
-    private void GetPagedImagesAndroid(int currentPage, int pageSize, List<PhotoItem> photoPage)
-    {
-        var photoPaths = _galleryService.GetPhotoPaths().Skip(currentPage * pageSize).Take(pageSize);
-
-        foreach (var photoPath in photoPaths)
-        {
-            var photoId = photoPath.GetHashCode();
-            var photoName = Path.GetFileName(photoPath);
-
-            var photoItem = new PhotoItem(photoId, photoName, PhotoItemType.Local)
-            {
-                Image = ImageSource.FromFile(photoPath)
-            };
-
-            photoPage.Add(photoItem);
-        }
-    }
+   
 
     private IEnumerable<PhotoItem> BuildPhotoItems(PhotoItemModel[] photoItemModels)
     {

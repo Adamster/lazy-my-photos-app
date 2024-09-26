@@ -10,7 +10,7 @@ public interface IUserApi
     Task<IApiResponse<LoginResponse>> Login([Body]LoginRequest loginModel);
 
     [Post("/refresh")]
-    Task<IApiResponse<RefreshResponse>> RefreshToken(RefreshTokenRequest refreshTokenRequest);
+    Task<IApiResponse<LoginResponse>> RefreshToken(RefreshTokenRequest refreshTokenRequest);
 
     [Post("/register")]
     Task<IApiResponse> Register([Body]RegisterRequest registerModel);

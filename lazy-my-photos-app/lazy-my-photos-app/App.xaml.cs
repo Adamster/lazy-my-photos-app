@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
-using Lazy.MyPhotos.App.Infrastructure.Services;
+using Lazy.MyPhotos.App.Infrastructure.Messages.User;
 using Lazy.MyPhotos.App.Infrastructure.Services.Interfaces;
-using Lazy.MyPhotos.App.Messages.User;
 using Lazy.MyPhotos.App.View;
 using Lazy.MyPhotos.App.ViewModel;
 using Microsoft.Extensions.Logging;
@@ -39,11 +38,13 @@ public partial class App : Application
     {
         _settingsService.ClearAll();
         MainPage = new MainPage();
+       _logger.LogInformation("User auto logout finished");
     }
 
     private void UserLoggedInHandler(object recipient, UserLoggedInMessage message)
     {
         _settingsService.AuthAccessToken = message.Value.AccessToken;
+        _settingsService.RefreshToken = message.Value.RefreshToken;
         PushNewAppShell();
     }
 

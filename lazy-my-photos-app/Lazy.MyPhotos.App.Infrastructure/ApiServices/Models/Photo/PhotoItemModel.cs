@@ -1,6 +1,4 @@
-﻿using Lazy.MyPhotos.App.Infrastructure.ApiServices.Models.Photo;
-
-namespace Lazy.MyPhotos.App.Infrastructure.ApiServices;
+﻿namespace Lazy.MyPhotos.App.Infrastructure.ApiServices.Models.Photo;
 
 public class PhotoItemModel
 {

@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Lazy.MyPhotos.App.Infrastructure.Messages.User;
 using Lazy.MyPhotos.App.Infrastructure.Services.Interfaces;
-using Lazy.MyPhotos.App.Messages.User;
 using Lazy.MyPhotos.App.Modules.User.Mvvm.Pages.Modals;
 using Lazy.MyPhotos.App.Modules.User.Mvvm.ViewModel.Modals;
 using Microsoft.Extensions.Logging;

@@ -12,14 +12,5 @@ public class MainApplication : MauiApplication
     {
     }
 
-    protected override MauiApp CreateMauiApp()
-    {
-
-        
-       var app =  MauiProgram.CreateMauiApp();
-
-       
-
-       return app;
-    }
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }

@@ -1,35 +1,19 @@
 ﻿using Lazy.MyPhotos.App.Modules.Photo.Handlers.Interfaces;
 
-namespace Lazy.MyPhotos.App.Modules.Photo.Handlers.Impl;
-
-public class RequestPhotoAccessPermissionHandler : IRequestPhotoAccessPermissionHandler
+namespace Lazy.MyPhotos.App.Modules.Photo.Handlers.Impl
 {
-    public async Task<bool> ExecuteAsync()
+    public class RequestPhotoAccessPermissionHandler : IRequestPhotoAccessPermissionHandler
     {
-
-        PermissionStatus status;
-
-        if (OperatingSystem.IsAndroidVersionAtLeast(33))
+        public async Task<bool> ExecuteAsync()
         {
-            status = await Permissions.RequestAsync<Permissions.Media>();
-        }
-        else
-        {
-            status = await Permissions.RequestAsync<Permissions.StorageRead>();
-        }
+            PermissionStatus status = await Permissions.RequestAsync<Permissions.Media>();
 
-        if (status != PermissionStatus.Granted)
-        {
-            if (OperatingSystem.IsAndroidVersionAtLeast(33))
+            if (status != PermissionStatus.Granted)
             {
                 status = await Permissions.RequestAsync<Permissions.Media>();
             }
-            else
-            {
-                status = await Permissions.RequestAsync<Permissions.Media>();
-            }
-        }
 
-        return status == PermissionStatus.Granted;
+            return status == PermissionStatus.Granted;
+        }
     }
 }

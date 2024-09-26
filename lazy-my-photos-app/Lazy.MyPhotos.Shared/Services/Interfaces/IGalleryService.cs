@@ -2,8 +2,5 @@
 
 public interface IGalleryService
 {
-    IList<string> GetPhotoPaths();
-
-    IList<Stream> GetPhotoStreams(int currentPage, int pageSize);
-  
+    Task<List<Stream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true);
 }

@@ -1,10 +1,23 @@
 ﻿using CommunityToolkit.Maui;
 using Lazy.MyPhotos.App.Extensions;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices;
+
+#if ANDROID
+using Lazy.MyPhotos.App.Infrastructure.Platforms.Android.Services;
+using Lazy.MyPhotos.App.Platforms.Android.Handlers;
+#endif
+
+#if IOS
+using Lazy.MyPhotos.App.Infrastructure.Platforms.iOS.Services;
+#endif
+
 using Lazy.MyPhotos.App.Infrastructure.Services;
+
+#if !ANDROID
 using Lazy.MyPhotos.App.Modules.Photo.Handlers.Impl;
+#endif
 using Lazy.MyPhotos.App.Modules.Photo.Handlers.Interfaces;
-using Lazy.MyPhotos.App.Modules.Photo.Services;
+
 using Lazy.MyPhotos.Shared.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 
@@ -30,11 +43,8 @@ public static class MauiProgram
             .RegisterRoutes();
 
         builder.Services.AddSingleton<IRequestPhotoAccessPermissionHandler, RequestPhotoAccessPermissionHandler>();
-#if ANDROID
-        builder.Services.AddSingleton<IGalleryService, AndroidGalleryService>();
-#elif IOS
-         builder.Services.AddSingleton<IGalleryService, iOSGalleryService>();
-#endif
+
+        builder.Services.AddSingleton<IGalleryService, GalleryService>();
 
 #if DEBUG
         builder.Logging.AddDebug();

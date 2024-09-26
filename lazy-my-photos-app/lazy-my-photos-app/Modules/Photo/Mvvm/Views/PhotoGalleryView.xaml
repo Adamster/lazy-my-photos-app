@@ -20,12 +20,12 @@
                         ItemsSource="{Binding Photos}"
                         
                         RemainingItemsThresholdReachedCommand="{Binding LoadPhotosCommand}"
-                        RemainingItemsThreshold="15"
+                        RemainingItemsThreshold="50"
                         VerticalScrollBarVisibility="Always"
                         SelectionMode="Single">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" 
-                                 Span="3" 
+                                 Span="4" 
                                  VerticalItemSpacing="3" 
                                  HorizontalItemSpacing="3"/>
                 </CollectionView.ItemsLayout>
@@ -33,9 +33,9 @@
                     <DataTemplate x:DataType="models:PhotoItem">
                         <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
                             <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
-                               Aspect="AspectFill" 
-                               HeightRequest="100" 
-                               WidthRequest="100">
+                               Aspect="AspectFit" 
+                               HeightRequest="96" 
+                               WidthRequest="96">
 
                             </Image>
                         </Frame>

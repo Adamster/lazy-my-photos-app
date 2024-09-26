@@ -33,9 +33,9 @@ public partial class RegisterViewModel
 
 
     [RelayCommand]
-    private async Task Login()
+    private void Login()
     {
-        var loginPage = App.Current.Handler.MauiContext.Services.GetService<LoginPage>();
+        var loginPage = Application.Current!.Handler!.MauiContext!.Services.GetService<LoginPage>();
         App.Current.MainPage = loginPage;
     }
 

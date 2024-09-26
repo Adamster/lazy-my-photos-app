@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using Lazy.MyPhotos.App.Messages.User;
+using Lazy.MyPhotos.App.Infrastructure.Messages.User;
 
 namespace Lazy.MyPhotos.App.Modules.User.Mvvm.ViewModel.Modals
 {

@@ -160,7 +160,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Modules\Photo\Services\" />
 	  <Folder Include="Platforms\Android\Services\" />
+	  <Folder Include="Platforms\iOS\Handlers\" />
 	  <Folder Include="Platforms\iOS\Permissions\" />
 	  <Folder Include="Platforms\iOS\Services\" />
 	</ItemGroup>

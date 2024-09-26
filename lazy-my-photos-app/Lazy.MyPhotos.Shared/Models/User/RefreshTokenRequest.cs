@@ -1,3 +1,3 @@
 ﻿namespace Lazy.MyPhotos.Shared.Models.User;
 
-public record RefreshTokenRequest();
+public record RefreshTokenRequest(string RefreshToken);

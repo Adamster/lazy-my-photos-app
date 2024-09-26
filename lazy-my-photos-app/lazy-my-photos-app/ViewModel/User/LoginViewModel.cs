@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices;
-using Lazy.MyPhotos.App.Messages.User;
+using Lazy.MyPhotos.App.Infrastructure.Messages.User;
 using Lazy.MyPhotos.App.View.User;
 using Lazy.MyPhotos.Shared.Models.User;
 
