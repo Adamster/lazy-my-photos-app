@@ -97,6 +97,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Services\**" />
+	  <AndroidResource Remove="Platforms\iOS\Handlers\**" />
+	  <AndroidResource Remove="Platforms\iOS\Services\**" />
+	  <Compile Remove="Platforms\Android\Services\**" />
+	  <Compile Remove="Platforms\iOS\Handlers\**" />
+	  <Compile Remove="Platforms\iOS\Services\**" />
+	  <EmbeddedResource Remove="Platforms\Android\Services\**" />
+	  <EmbeddedResource Remove="Platforms\iOS\Handlers\**" />
+	  <EmbeddedResource Remove="Platforms\iOS\Services\**" />
+	  <MauiCss Remove="Platforms\Android\Services\**" />
+	  <MauiCss Remove="Platforms\iOS\Handlers\**" />
+	  <MauiCss Remove="Platforms\iOS\Services\**" />
+	  <MauiXaml Remove="Platforms\Android\Services\**" />
+	  <MauiXaml Remove="Platforms\iOS\Handlers\**" />
+	  <MauiXaml Remove="Platforms\iOS\Services\**" />
+	  <None Remove="Platforms\Android\Services\**" />
+	  <None Remove="Platforms\iOS\Handlers\**" />
+	  <None Remove="Platforms\iOS\Services\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="appSettings.json" />
 	  <None Remove="Resources\Images\icon_close.png" />
 	  <None Remove="Resources\Images\icon_memories.svg" />
@@ -121,6 +142,8 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Lazy.MyPhotos.App.Infrastructure\Lazy.MyPhotos.App.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Lazy.MyPhotos.Persistance\Lazy.MyPhotos.Persistence.csproj" />
+	  <ProjectReference Include="..\Lazy.MyPhotos.Shared\Lazy.MyPhotos.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -160,11 +183,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Modules\Photo\Services\" />
-	  <Folder Include="Platforms\Android\Services\" />
-	  <Folder Include="Platforms\iOS\Handlers\" />
+	  <Folder Include="Modules\Photo\Mediators\Impl\" />
 	  <Folder Include="Platforms\iOS\Permissions\" />
-	  <Folder Include="Platforms\iOS\Services\" />
 	</ItemGroup>
 
 </Project>

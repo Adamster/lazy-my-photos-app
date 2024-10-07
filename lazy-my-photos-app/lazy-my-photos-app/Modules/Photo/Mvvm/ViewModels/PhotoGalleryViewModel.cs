@@ -5,7 +5,7 @@ using Lazy.MyPhotos.App.Infrastructure.ApiServices;
 using Lazy.MyPhotos.App.Infrastructure.ApiServices.Models.Photo;
 using Lazy.MyPhotos.App.Modules.Photo.Handlers.Interfaces;
 using Lazy.MyPhotos.App.Modules.Photo.Models;
-using Lazy.MyPhotos.Shared.Services.Interfaces;
+using Lazy.MyPhotos.Shared.Services.Gallery.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
@@ -24,7 +24,7 @@ public partial class PhotoGalleryViewModel
     private readonly ILogger<PhotoGalleryViewModel> _logger;
 
     [ObservableProperty]
-    ObservableCollection<PhotoItem> _photos = new();
+    ObservableCollection<DisplayPhotoItem> _photos = new();
 
     private bool _isLoading;
 
@@ -60,7 +60,7 @@ public partial class PhotoGalleryViewModel
 
         IsLoading = true;
 
-        IEnumerable<PhotoItem> newPhotos = await GetPhotosPage(_currentPage, PageSize);
+        IEnumerable<DisplayPhotoItem> newPhotos = await GetPhotosPage(_currentPage, PageSize);
 
         foreach (var photo in newPhotos)
         {
@@ -83,10 +83,10 @@ public partial class PhotoGalleryViewModel
         }
     }
 
-    private async Task<IEnumerable<PhotoItem>> GetPhotosPage(int currentPage, int pageSize)
+    private async Task<IEnumerable<DisplayPhotoItem>> GetPhotosPage(int currentPage, int pageSize)
     {
         _logger.LogInformation("Loading new page {0}", currentPage);
-        var photoPage = new List<PhotoItem>();
+        var photoPage = new List<DisplayPhotoItem>();
 
 
         await GetPagedImages(currentPage, pageSize, photoPage);
@@ -103,7 +103,7 @@ public partial class PhotoGalleryViewModel
         //}
     }
 
-    private async Task GetPagedImages(int currentPage, int pageSize, List<PhotoItem> photoPage)
+    private async Task GetPagedImages(int currentPage, int pageSize, List<DisplayPhotoItem> photoPage)
     {
         var photoStreams = await _galleryService.GetPhotoStreams(currentPage, pageSize, false);
 
@@ -115,7 +115,7 @@ public partial class PhotoGalleryViewModel
 
             var photoId = 0;
             var photoName = Path.GetRandomFileName();
-            var photoItem = new PhotoItem(photoId, photoName, PhotoItemType.Local)
+            var photoItem = new DisplayPhotoItem(photoId, photoName, PhotoItemType.Local)
             {
                 Image = ImageSource.FromStream(() => new MemoryStream(bytes))
             };
@@ -126,16 +126,16 @@ public partial class PhotoGalleryViewModel
 
    
 
-    private IEnumerable<PhotoItem> BuildPhotoItems(PhotoItemModel[] photoItemModels)
+    private IEnumerable<DisplayPhotoItem> BuildPhotoItems(PhotoItemModel[] photoItemModels)
     {
         return photoItemModels.Select(x =>
-            new PhotoItem(x.Id, x.DisplayFileName, PhotoItemType.Cloud)
+            new DisplayPhotoItem(x.Id, x.DisplayFileName, PhotoItemType.Cloud)
             {
                 Image = ImageSource.FromFile("sloth.png")
             });
     }
 
-    private void PopulatePhotoCollection(IEnumerable<PhotoItem> photoModels)
+    private void PopulatePhotoCollection(IEnumerable<DisplayPhotoItem> photoModels)
     {
         foreach (var photoModel in photoModels)
         {

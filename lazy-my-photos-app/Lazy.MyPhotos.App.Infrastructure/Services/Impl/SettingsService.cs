@@ -6,34 +6,45 @@ namespace Lazy.MyPhotos.App.Infrastructure.Services.Impl;
 
 public class SettingsService : ISettingsService
 {
+  
     private const string AccessTokenKey = "access_token";
     private const string RefreshTokenKey = "refresh_token";
     private const string AccessTokenDefault = "";
     private const string RefreshTokenDefault = "";
 
-    public string AuthAccessToken
+    private readonly ILogger<SettingsService> _logger;
+
+    public SettingsService(ILogger<SettingsService> logger)
     {
-        get => Preferences.Get(AccessTokenKey, AccessTokenDefault);
-        set => Preferences.Set(AccessTokenKey, value);
+        _logger = logger;
+        Task.Run(LoadValues);
     }
 
-    public string RefreshToken
+    private async Task LoadValues()
     {
-        get => Preferences.Get(RefreshTokenKey, RefreshTokenDefault);
-        set => Preferences.Set(RefreshTokenKey, value);
+        AuthAccessToken = await SecureStorage.Default.GetAsync(AccessTokenKey) ?? AccessTokenDefault;
+        RefreshToken = await SecureStorage.Default.GetAsync(RefreshTokenKey) ?? RefreshTokenDefault;
     }
+
+
+    public string AuthAccessToken { get; private set; } = null!;
+
+    public string RefreshToken { get; private set; } = null!;
 
     public void ClearAll()
     {
+        SecureStorage.Default.RemoveAll();
         Preferences.Clear();
-        //logger.LogInformation("All Settings cleared");
+        _logger.LogInformation("All Settings cleared");
     }
 
-    public void SaveLoginResponse(LoginResponse refreshResultContent)
+    public async Task SaveLoginResponse(LoginResponse loginResponse)
     {
-      //  logger.LogInformation("Saving login response");
-        AuthAccessToken = refreshResultContent.AccessToken;
-        RefreshToken = refreshResultContent.RefreshToken;
-      //  logger.LogInformation("Access and Refresh token saved");
+        _logger.LogInformation("Saving login response");
+
+        await SecureStorage.Default.SetAsync(AccessTokenKey, loginResponse.AccessToken);
+        await SecureStorage.Default.SetAsync(RefreshTokenKey, loginResponse.RefreshToken);
+
+        _logger.LogInformation("Access and Refresh token saved");
     }
 }

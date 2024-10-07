@@ -1,4 +1,4 @@
-﻿namespace Lazy.MyPhotos.Shared.Services.Interfaces;
+﻿namespace Lazy.MyPhotos.Shared.Services.Gallery.Interfaces;
 
 public interface IGalleryService
 {

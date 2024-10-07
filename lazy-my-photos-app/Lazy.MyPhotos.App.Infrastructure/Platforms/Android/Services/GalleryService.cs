@@ -1,7 +1,7 @@
 ﻿using Android.Graphics;
 using Android.OS;
 using Android.Provider;
-using Lazy.MyPhotos.Shared.Services.Interfaces;
+using Lazy.MyPhotos.Shared.Services.Gallery.Interfaces;
 using Debug = System.Diagnostics.Debug;
 
 namespace Lazy.MyPhotos.App.Infrastructure.Platforms.Android.Services;

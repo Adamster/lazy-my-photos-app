@@ -1,7 +1,7 @@
 ﻿
 using CoreGraphics;
 using Foundation;
-using Lazy.MyPhotos.Shared.Services.Interfaces;
+using Lazy.MyPhotos.Shared.Services.Gallery.Interfaces;
 using Microsoft.Extensions.Logging;
 using Photos;
 using UIKit;

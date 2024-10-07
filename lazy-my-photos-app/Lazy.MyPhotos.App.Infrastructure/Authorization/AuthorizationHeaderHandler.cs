@@ -83,7 +83,7 @@ public class AuthorizationHeaderHandler : DelegatingHandler
 
         if (refreshResult is { IsSuccessStatusCode: true, StatusCode: HttpStatusCode.OK })
         {
-            _settingsService.SaveLoginResponse(refreshResult.Content!);
+           await _settingsService.SaveLoginResponse(refreshResult.Content!);
         }
 
         return refreshResult.Content!.AccessToken;
