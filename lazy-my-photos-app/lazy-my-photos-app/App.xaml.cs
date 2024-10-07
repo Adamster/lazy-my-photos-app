@@ -43,8 +43,7 @@ public partial class App : Application
 
     private void UserLoggedInHandler(object recipient, UserLoggedInMessage message)
     {
-        _settingsService.AuthAccessToken = message.Value.AccessToken;
-        _settingsService.RefreshToken = message.Value.RefreshToken;
+        _settingsService.SaveLoginResponse(message.Value);
         PushNewAppShell();
     }
 

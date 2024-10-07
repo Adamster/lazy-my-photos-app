@@ -5,20 +5,19 @@ using Lazy.MyPhotos.App.View.User;
 
 namespace Lazy.MyPhotos.App.ViewModel;
 
-[ObservableObject]
-public partial class MainViewModel
+public partial class MainViewModel : ObservableObject
 {
     [RelayCommand]
-    private async Task Register()
+    private void Register()
     {
-        var registerPage = Application.Current.Handler.MauiContext.Services.GetService<RegisterPage>();
-        App.Current.MainPage = registerPage;
+        var registerPage = Application.Current!.Handler!.MauiContext!.Services.GetService<RegisterPage>();
+        Application.Current.MainPage = registerPage;
     }
 
     [RelayCommand]
-    private async Task Login()
+    private void Login()
     {
-        var loginPage = App.Current.Handler.MauiContext.Services.GetService<LoginPage>();
-        App.Current.MainPage = loginPage;
+        var loginPage = Application.Current!.Handler!.MauiContext!.Services.GetService<LoginPage>();
+        Application.Current.MainPage = loginPage;
     }
 }

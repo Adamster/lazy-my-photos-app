@@ -13,14 +13,19 @@ namespace Lazy.MyPhotos.App.Platforms.Android.Handlers
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu) // Android 13+
             {
-                ActivityCompat.RequestPermissions(Platform.CurrentActivity, new string[] {
-                    Manifest.Permission.ReadMediaImages,
-                    Manifest.Permission.ReadMediaVideo
-                }, RequestStorageId);
+                if (Platform.CurrentActivity != null)
+                {
+                    ActivityCompat.RequestPermissions(Platform.CurrentActivity, [Manifest.Permission.ReadMediaImages, Manifest.Permission.ReadMediaVideo],
+                        RequestStorageId);
+                }
             }
 
 
-            ActivityCompat.RequestPermissions(Platform.CurrentActivity, new string[] { Manifest.Permission.ReadExternalStorage }, RequestStorageId);
+            if (Platform.CurrentActivity != null)
+            {
+                ActivityCompat.RequestPermissions(Platform.CurrentActivity, [Manifest.Permission.ReadExternalStorage], RequestStorageId);
+            }
+
             return Task.FromResult(true);
         }
     }

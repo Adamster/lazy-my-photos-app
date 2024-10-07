@@ -4,10 +4,10 @@ namespace Lazy.MyPhotos.App.Infrastructure.Services.Interfaces;
 
 public interface ISettingsService
 {
-    string AuthAccessToken { get; set; }
-    string RefreshToken { get; set; }
+    string AuthAccessToken { get; }
+    string RefreshToken { get;  }
 
     void ClearAll();
     
-    void SaveLoginResponse(LoginResponse refreshResultContent);
+    Task SaveLoginResponse(LoginResponse loginResponse);
 }

@@ -1,4 +1,5 @@
-﻿namespace Lazy.MyPhotos.App.Infrastructure.ApiServices.Models.Photo;
+﻿// ReSharper disable UnusedMember.Global
+namespace Lazy.MyPhotos.App.Infrastructure.ApiServices.Models.Photo;
 
 public class PhotoItemModel
 {

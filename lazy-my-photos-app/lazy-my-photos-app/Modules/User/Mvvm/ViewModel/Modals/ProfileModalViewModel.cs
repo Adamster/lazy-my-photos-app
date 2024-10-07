@@ -5,14 +5,13 @@ using Lazy.MyPhotos.App.Infrastructure.Messages.User;
 
 namespace Lazy.MyPhotos.App.Modules.User.Mvvm.ViewModel.Modals
 {
-    [ObservableObject]
-    public partial class ProfileModalViewModel
+    public partial class ProfileModalViewModel : ObservableObject
     {
 
         [RelayCommand]
         public async Task Close()
         {
-            await Application.Current.MainPage.Navigation.PopModalAsync();
+            await Application.Current!.MainPage!.Navigation!.PopModalAsync();
         }
 
         [RelayCommand]

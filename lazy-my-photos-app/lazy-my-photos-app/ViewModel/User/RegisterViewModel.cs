@@ -6,8 +6,8 @@ using Lazy.MyPhotos.Shared.Models.User;
 
 namespace Lazy.MyPhotos.App.ViewModel.User;
 
-[ObservableObject]
-public partial class RegisterViewModel
+
+public partial class RegisterViewModel : ObservableObject
 {
 
     private CancellationTokenSource _cancellationTokenSource = new();

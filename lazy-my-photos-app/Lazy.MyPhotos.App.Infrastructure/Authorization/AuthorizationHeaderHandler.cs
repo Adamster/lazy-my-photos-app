@@ -42,7 +42,6 @@ public class AuthorizationHeaderHandler : DelegatingHandler
                 return result;
             }
 
-            _settingsService.AuthAccessToken = newAccessToken;
             request.Headers.Authorization = GenerateHeadersAuthorization(newAccessToken);
 
             var newResult = await base.SendAsync(request, cancellationToken);
@@ -83,7 +82,7 @@ public class AuthorizationHeaderHandler : DelegatingHandler
 
         if (refreshResult is { IsSuccessStatusCode: true, StatusCode: HttpStatusCode.OK })
         {
-            _settingsService.SaveLoginResponse(refreshResult.Content!);
+           await _settingsService.SaveLoginResponse(refreshResult.Content!);
         }
 
         return refreshResult.Content!.AccessToken;

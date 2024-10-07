@@ -30,7 +30,7 @@
                                  HorizontalItemSpacing="3"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:PhotoItem">
+                    <DataTemplate x:DataType="models:DisplayPhotoItem">
                         <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
                             <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
                                Aspect="AspectFit" 
