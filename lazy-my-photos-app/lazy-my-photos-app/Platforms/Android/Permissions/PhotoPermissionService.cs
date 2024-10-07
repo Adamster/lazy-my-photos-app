@@ -12,7 +12,7 @@ using static AndroidX.Activity.Result.Contract.ActivityResultContracts;
 
 namespace Lazy.MyPhotos.App.Platforms.Android.Permissions
 {
-    internal class PhotoPermissionService : IPhotoPermissionService
+    internal sealed class PhotoPermissionService : IPhotoPermissionService
     {
         public Task<bool> CheckStatusAsync()
         {

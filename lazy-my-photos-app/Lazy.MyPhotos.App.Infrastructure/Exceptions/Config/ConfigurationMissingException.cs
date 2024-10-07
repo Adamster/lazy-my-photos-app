@@ -5,15 +5,5 @@ namespace Lazy.MyPhotos.App.Infrastructure.Exceptions.Config
 {
     [ExcludeFromCodeCoverage]
     [Serializable]
-    public sealed class ConfigurationMissingException : Exception
-    {
-        public ConfigurationMissingException(string key) : base($"{key} key is missing from configuration")
-        {
-        }
-
-        private ConfigurationMissingException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
-    }
+    public sealed class ConfigurationMissingException(string key) : Exception($"{key} key is missing from configuration");
 }

@@ -8,8 +8,7 @@ using Lazy.MyPhotos.Shared.Models.User;
 
 namespace Lazy.MyPhotos.App.ViewModel.User;
 
-[ObservableObject]
-public partial class LoginViewModel(IUserApi userApi)
+public partial class LoginViewModel(IUserApi userApi) : ObservableObject
 {
     [ObservableProperty]
     private string _email = string.Empty;
@@ -36,9 +35,9 @@ public partial class LoginViewModel(IUserApi userApi)
     }
 
     [RelayCommand]
-    private async Task Register()
+    private void Register()
     {
-        var registerPage = Application.Current.Handler.MauiContext.Services.GetService<RegisterPage>();
-        App.Current.MainPage = registerPage;
+        var registerPage = Application.Current!.Handler!.MauiContext!.Services.GetService<RegisterPage>();
+        Application.Current.MainPage = registerPage;
     }
 }

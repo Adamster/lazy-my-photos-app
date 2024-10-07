@@ -20,7 +20,7 @@ public class GalleryService : IGalleryService
 
         string sortOrder = $"{MediaStore.Images.IImageColumns.DateTaken} DESC";
 
-        using var cursor = Platform.CurrentActivity.ContentResolver.Query(uri, projection, null, null, sortOrder);
+        using var cursor = Platform.CurrentActivity?.ContentResolver?.Query(uri!, projection, null, null, sortOrder);
         if (cursor != null)
         {
             int totalCount = cursor.Count;
@@ -102,7 +102,7 @@ public class GalleryService : IGalleryService
 
         // Compress the scaled bitmap and return it as a Stream
         MemoryStream outputStream = new MemoryStream();
-        bitmap.Compress(Bitmap.CompressFormat.Jpeg, 80, outputStream);
+        bitmap.Compress(Bitmap.CompressFormat.Jpeg!, 80, outputStream);
         outputStream.Position = 0;
         bitmap.Recycle();
         return outputStream;

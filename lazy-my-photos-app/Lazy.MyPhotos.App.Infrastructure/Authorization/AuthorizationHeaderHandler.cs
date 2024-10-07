@@ -42,7 +42,6 @@ public class AuthorizationHeaderHandler : DelegatingHandler
                 return result;
             }
 
-            _settingsService.AuthAccessToken = newAccessToken;
             request.Headers.Authorization = GenerateHeadersAuthorization(newAccessToken);
 
             var newResult = await base.SendAsync(request, cancellationToken);

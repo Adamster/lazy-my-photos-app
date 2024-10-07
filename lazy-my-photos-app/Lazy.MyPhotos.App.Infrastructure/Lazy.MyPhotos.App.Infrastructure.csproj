@@ -28,11 +28,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.80" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
-		<PackageReference Include="Refit" Version="7.1.2" />
-		<PackageReference Include="Refit.HttpClientFactory" Version="7.1.2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.91" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.91" />
+		<PackageReference Include="Refit" Version="7.2.1" />
+		<PackageReference Include="Refit.HttpClientFactory" Version="7.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -42,5 +42,9 @@
 	<ItemGroup>
 	  <Folder Include="Exceptions\Config\" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<WindowsSdkPackageVersion>10.0.19041.41</WindowsSdkPackageVersion> 
+	</PropertyGroup>
 
 </Project>

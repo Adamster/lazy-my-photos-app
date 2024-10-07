@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modules\Photo\Services\Impl\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\lazy-my-photos-app\lazy-my-photos-app\Lazy.MyPhotos.App.csproj" />
+    <ProjectReference Include="..\..\lazy-my-photos-app\Lazy.MyPhotos.App.Infrastructure\Lazy.MyPhotos.App.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\lazy-my-photos-app\Lazy.MyPhotos.Persistance\Lazy.MyPhotos.Persistence.csproj" />
+    <ProjectReference Include="..\..\lazy-my-photos-app\Lazy.MyPhotos.Shared\Lazy.MyPhotos.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

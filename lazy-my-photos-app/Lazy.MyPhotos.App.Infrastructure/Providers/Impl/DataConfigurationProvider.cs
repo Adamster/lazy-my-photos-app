@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Lazy.MyPhotos.App.Infrastructure.Providers.Impl
 {
-    internal class DataConfigurationProvider : IDataConfigurationProvider
+    internal sealed class DataConfigurationProvider : IDataConfigurationProvider
     {
 
         internal DataConfigurationProvider(IConfiguration configuration)

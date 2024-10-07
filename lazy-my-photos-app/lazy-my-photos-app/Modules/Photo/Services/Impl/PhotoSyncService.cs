@@ -4,16 +4,11 @@ using Lazy.MyPhotos.App.Modules.Photo.Models;
 using Lazy.MyPhotos.Persistence.Entities;
 using Lazy.MyPhotos.Shared.Services.Photo.Sync;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lazy.MyPhotos.App.Modules.Photo.Services.Impl
 {
-    internal class PhotoSyncService : IPhotoSyncService
+    internal sealed class PhotoSyncService : IPhotoSyncService
     {
         private readonly ILogger<PhotoSyncService> _logger;
         private readonly IGetNewPhotosHandler _getNewPhotosHandler;

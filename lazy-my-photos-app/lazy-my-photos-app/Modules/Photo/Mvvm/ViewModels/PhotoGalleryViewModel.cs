@@ -10,8 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 
-[ObservableObject]
-public partial class PhotoGalleryViewModel
+public partial class PhotoGalleryViewModel : ObservableObject
 {
     private const int PageSize = 100;
     private int _currentPage = 0;
@@ -78,7 +77,7 @@ public partial class PhotoGalleryViewModel
 
         if (!photoAccessGranted)
         {
-            await Application.Current.MainPage.DisplayAlert("Permission Required", "App needs access to photos to proceed.", "OK");
+            await Application.Current!.MainPage!.DisplayAlert("Permission Required", "App needs access to photos to proceed.", "OK");
             return;
         }
     }
@@ -139,7 +138,7 @@ public partial class PhotoGalleryViewModel
     {
         foreach (var photoModel in photoModels)
         {
-            _photos.Add(photoModel);
+            Photos.Add(photoModel);
         }
     }
 

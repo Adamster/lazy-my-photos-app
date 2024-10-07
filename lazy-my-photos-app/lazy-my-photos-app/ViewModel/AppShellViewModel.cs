@@ -9,8 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Lazy.MyPhotos.App.ViewModel;
 
-[ObservableObject]
-public partial class AppShellViewModel
+public partial class AppShellViewModel : ObservableObject
 {
     private readonly IUserService _userService;
     private readonly ILogger<AppShellViewModel> _logger;

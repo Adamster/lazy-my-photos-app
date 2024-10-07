@@ -12,8 +12,10 @@ public partial class PhotoPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var vm = GalleryView.BindingContext as PhotoGalleryViewModel;
-        await vm.EnsurePermissionAccess();
-        await vm.LoadFirstPage();
+        if (GalleryView.BindingContext is PhotoGalleryViewModel vm)
+        {
+            await vm.EnsurePermissionAccess();
+            await vm.LoadFirstPage();
+        }
     }
 }

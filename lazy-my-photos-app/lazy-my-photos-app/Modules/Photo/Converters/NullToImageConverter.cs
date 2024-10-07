@@ -2,7 +2,7 @@
 
 public class NullToImageConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    public object Convert(object? value, Type targetType, object? parameter, System.Globalization.CultureInfo culture)
     {
         // If the value (ImageSource) is null, return a placeholder image
         if (value == null)
@@ -10,12 +10,9 @@ public class NullToImageConverter : IValueConverter
             return ImageSource.FromFile("sloth.png"); // Replace with your actual placeholder image
         }
 
-        // Otherwise, return the actual ImageSource
+        // Otherwise, return the actual ImageSource 
         return value;
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    {
-        throw new NotImplementedException();
-    }
+    public object ConvertBack(object? value, Type targetType, object? parameter, System.Globalization.CultureInfo culture) => throw new NotImplementedException();
 }

@@ -19,11 +19,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
 		<PackageReference Include="LiteDB" Version="5.0.21" />
 		<PackageReference Include="LiteDB.Async" Version="0.1.8" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.91" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.91" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 	</ItemGroup>
 
@@ -35,5 +35,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Lazy.MyPhotos.App.Infrastructure\Lazy.MyPhotos.App.Infrastructure.csproj" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<WindowsSdkPackageVersion>10.0.19041.41</WindowsSdkPackageVersion> 
+	</PropertyGroup>
 
 </Project>
