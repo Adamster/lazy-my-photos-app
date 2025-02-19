@@ -37,7 +37,7 @@
                     <toolkit:EmailValidationBehavior 
                         InvalidStyle="{StaticResource InvalidEntryStyle}"
                         ValidStyle="{StaticResource ValidEntryStyle}"
-                        Flags="ValidateOnUnfocusing" />
+                        Flags="ValidateOnUnfocused" />
                 </Entry.Behaviors>
             </Entry>
             <Entry Placeholder="Password" IsPassword="True" Grid.Row="3" Text="{Binding Password}" />

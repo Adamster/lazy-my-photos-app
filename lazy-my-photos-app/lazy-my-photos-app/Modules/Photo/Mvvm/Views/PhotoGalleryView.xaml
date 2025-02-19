@@ -18,9 +18,10 @@
             <!-- Photo Gallery CollectionView -->
             <CollectionView x:Name="GalleryCollectionView" x:DataType="viewModels:PhotoGalleryViewModel"
                         ItemsSource="{Binding Photos}"
-                        
+                        ItemSizingStrategy="MeasureFirstItem"
                         RemainingItemsThresholdReachedCommand="{Binding LoadPhotosCommand}"
-                        RemainingItemsThreshold="50"
+                        RemainingItemsThreshold="5"
+                        ItemsUpdatingScrollMode="KeepScrollOffset"
                         VerticalScrollBarVisibility="Always"
                         SelectionMode="Single">
                 <CollectionView.ItemsLayout>
@@ -30,15 +31,12 @@
                                  HorizontalItemSpacing="3"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:PhotoItem">
-                        <Frame Padding="0" HasShadow="False" BorderColor="Transparent">
+                    <DataTemplate x:DataType="models:PhotoItem" >
                             <Image Source="{Binding Image, Converter={StaticResource NullToImageConverter}}" 
                                Aspect="AspectFit" 
                                HeightRequest="96" 
                                WidthRequest="96">
-
                             </Image>
-                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

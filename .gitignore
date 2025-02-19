@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/lazy-my-photos-app/.idea/.idea.Lazy.MyPhotos.App/.idea

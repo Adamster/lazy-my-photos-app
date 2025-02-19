@@ -43,8 +43,9 @@ public static class MauiProgram
             .RegisterRoutes();
 
         builder.Services.AddSingleton<IRequestPhotoAccessPermissionHandler, RequestPhotoAccessPermissionHandler>();
-
+#if ANDROID || IOS 
         builder.Services.AddSingleton<IGalleryService, GalleryService>();
+#endif
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -2,15 +2,15 @@
 using Android.OS;
 using Android.Provider;
 using Lazy.MyPhotos.Shared.Services.Interfaces;
-using Debug = System.Diagnostics.Debug;
+
 
 namespace Lazy.MyPhotos.App.Infrastructure.Platforms.Android.Services;
 
 public class GalleryService : IGalleryService
 {
-    public async Task<List<Stream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
+    public async Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
     {
-        var photos = new List<Stream>();
+        var photos = new List<MemoryStream>();
         var uri = MediaStore.Images.Media.ExternalContentUri;
 
         string[] projection =
@@ -20,6 +20,8 @@ public class GalleryService : IGalleryService
 
         string sortOrder = $"{MediaStore.Images.IImageColumns.DateTaken} DESC";
 
+
+        
         using var cursor = Platform.CurrentActivity.ContentResolver.Query(uri, projection, null, null, sortOrder);
         if (cursor != null)
         {
@@ -67,15 +69,9 @@ public class GalleryService : IGalleryService
         return photos;
     }
 
-    private async Task<Stream> BuildMemoryStream(string imagePath, bool isThumbnail)
+    private async Task<MemoryStream> BuildMemoryStream(string imagePath, bool isThumbnail)
     {
         var bytes = await File.ReadAllBytesAsync(imagePath);
-        if (isThumbnail)
-        { 
-            var memoryStream = new MemoryStream(bytes);
-            var scaledStream = ScaleDownImageAndroid(memoryStream, 100, 100);
-            return scaledStream;
-        }
 
         return new MemoryStream(bytes);
     }

@@ -13,7 +13,7 @@ namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 [ObservableObject]
 public partial class PhotoGalleryViewModel
 {
-    private const int PageSize = 100;
+    private const int PageSize = 50;
     private int _currentPage = 0;
 
 
@@ -109,22 +109,19 @@ public partial class PhotoGalleryViewModel
 
         foreach (var photoStream in photoStreams)
         {
-            using var tmpStream = new MemoryStream();
-            await photoStream.CopyToAsync(tmpStream);
-            var bytes = tmpStream.ToArray();
-
             var photoId = 0;
             var photoName = Path.GetRandomFileName();
             var photoItem = new PhotoItem(photoId, photoName, PhotoItemType.Local)
             {
-                Image = ImageSource.FromStream(() => new MemoryStream(bytes))
+                Image = ImageSource.FromStream(() => new MemoryStream(photoStream.ToArray()))
             };
 
             photoPage.Add(photoItem);
+
         }
     }
 
-   
+
 
     private IEnumerable<PhotoItem> BuildPhotoItems(PhotoItemModel[] photoItemModels)
     {

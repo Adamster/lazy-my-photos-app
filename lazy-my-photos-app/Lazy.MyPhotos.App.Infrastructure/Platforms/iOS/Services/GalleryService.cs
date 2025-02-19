@@ -10,7 +10,7 @@ namespace Lazy.MyPhotos.App.Infrastructure.Platforms.iOS.Services;
 
 public class GalleryService(ILogger<GalleryService> logger) : IGalleryService
 {
-    public Task<List<Stream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
+    public Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
     {
         int skip = currentPage * pageSize;
         int take = pageSize;
@@ -50,11 +50,18 @@ public class GalleryService(ILogger<GalleryService> logger) : IGalleryService
             });
         }
 
-     
-        List<Stream> streams = imageList
-            .Select(x => x.AsPNG()!.AsStream()).ToList();
+
+            
 
 
-        return Task.FromResult(streams);
+        var memoryStreams = new List<MemoryStream>();
+
+        foreach (UIImage uiImage in imageList)
+        {
+            var memoryStream = new MemoryStream(uiImage.AsJPEG()!.ToArray());
+            memoryStreams.Add(memoryStream);
+        }
+
+        return Task.FromResult(memoryStreams);
     }
 }
