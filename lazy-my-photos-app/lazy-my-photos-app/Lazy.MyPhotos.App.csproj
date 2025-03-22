@@ -127,6 +127,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Lazy.MyPhotos.App.Infrastructure\Lazy.MyPhotos.App.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Lazy.MyPhotos.Persistance\Lazy.MyPhotos.Persistence.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

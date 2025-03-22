@@ -30,6 +30,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Extensions\" />
+	  <Folder Include="Providers\Impl\" />
 	</ItemGroup>
 
 </Project>

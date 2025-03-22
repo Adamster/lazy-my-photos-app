@@ -43,7 +43,7 @@ public partial class AppShellViewModel
     [RelayCommand]
     public async Task Profile()
     {
-        await Application.Current!.MainPage!.Navigation.PushModalAsync(new ProfileModalPage(new ProfileModalViewModel()));
+        await Application.Current!.Windows[0].Navigation.PushModalAsync(new ProfileModalPage(new ProfileModalViewModel()));
     }
 
     private static void LogoutInternal()

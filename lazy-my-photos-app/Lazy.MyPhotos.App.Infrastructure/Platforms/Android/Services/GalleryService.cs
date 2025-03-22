@@ -8,7 +8,7 @@ namespace Lazy.MyPhotos.App.Infrastructure.Platforms.Android.Services;
 
 public class GalleryService : IGalleryService
 {
-    public async Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
+    public async Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize)
     {
         var photos = new List<MemoryStream>();
         var uri = MediaStore.Images.Media.ExternalContentUri;
@@ -20,8 +20,6 @@ public class GalleryService : IGalleryService
 
         string sortOrder = $"{MediaStore.Images.IImageColumns.DateTaken} DESC";
 
-
-        
         using var cursor = Platform.CurrentActivity.ContentResolver.Query(uri, projection, null, null, sortOrder);
         if (cursor != null)
         {
@@ -56,7 +54,7 @@ public class GalleryService : IGalleryService
                         var fileExists = File.Exists(imagePath);
                         if (fileExists)
                         {
-                            var stream = await BuildMemoryStream(imagePath, isThumbnail);
+                            var stream = await BuildMemoryStream(imagePath);
                             photos.Add(stream);
                         }
                     }
@@ -69,7 +67,7 @@ public class GalleryService : IGalleryService
         return photos;
     }
 
-    private async Task<MemoryStream> BuildMemoryStream(string imagePath, bool isThumbnail)
+    private async Task<MemoryStream> BuildMemoryStream(string imagePath)
     {
         var bytes = await File.ReadAllBytesAsync(imagePath);
 

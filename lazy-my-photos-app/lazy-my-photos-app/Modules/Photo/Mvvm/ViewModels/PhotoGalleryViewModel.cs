@@ -10,8 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 
-[ObservableObject]
-public partial class PhotoGalleryViewModel
+public partial class PhotoGalleryViewModel : ObservableObject
 {
     private const int PageSize = 50;
     private int _currentPage = 0;
@@ -49,6 +48,11 @@ public partial class PhotoGalleryViewModel
         _logger = logger;
     }
 
+    public async Task LoadFirstPage()
+    {
+        await LoadPhotos();
+    }
+
     [RelayCommand]
     public async Task LoadPhotos()
     {
@@ -60,7 +64,7 @@ public partial class PhotoGalleryViewModel
 
         IsLoading = true;
 
-        IEnumerable<PhotoItem> newPhotos = await GetPhotosPage(_currentPage, PageSize);
+        var newPhotos = await GetPhotosPage(_currentPage, PageSize);
 
         foreach (var photo in newPhotos)
         {
@@ -86,26 +90,16 @@ public partial class PhotoGalleryViewModel
     private async Task<IEnumerable<PhotoItem>> GetPhotosPage(int currentPage, int pageSize)
     {
         _logger.LogInformation("Loading new page {0}", currentPage);
-        var photoPage = new List<PhotoItem>();
+        var photoList = new List<PhotoItem>();
 
+        await GetPagedImages(currentPage, pageSize, photoList);
 
-        await GetPagedImages(currentPage, pageSize, photoPage);
-
-        return photoPage;
-
-        //var photos = await _photoApi.GetPhotos();
-
-        //if (photos is { IsSuccessStatusCode: true, Content: not null })
-        //{
-        //    var photoModels = BuildPhotoItems(photos.Content);
-        //    PopulatePhotoCollection(photoModels);
-        //    await DownloadPhotoContent();
-        //}
+        return photoList;
     }
 
-    private async Task GetPagedImages(int currentPage, int pageSize, List<PhotoItem> photoPage)
+    private async Task GetPagedImages(int currentPage, int pageSize, List<PhotoItem> photoList)
     {
-        var photoStreams = await _galleryService.GetPhotoStreams(currentPage, pageSize, false);
+        var photoStreams = await _galleryService.GetPhotoStreams(currentPage, pageSize);
 
         foreach (var photoStream in photoStreams)
         {
@@ -116,65 +110,10 @@ public partial class PhotoGalleryViewModel
                 Image = ImageSource.FromStream(() => new MemoryStream(photoStream.ToArray()))
             };
 
-            photoPage.Add(photoItem);
+            photoList.Add(photoItem);
 
         }
     }
 
 
-
-    private IEnumerable<PhotoItem> BuildPhotoItems(PhotoItemModel[] photoItemModels)
-    {
-        return photoItemModels.Select(x =>
-            new PhotoItem(x.Id, x.DisplayFileName, PhotoItemType.Cloud)
-            {
-                Image = ImageSource.FromFile("sloth.png")
-            });
-    }
-
-    private void PopulatePhotoCollection(IEnumerable<PhotoItem> photoModels)
-    {
-        foreach (var photoModel in photoModels)
-        {
-            _photos.Add(photoModel);
-        }
-    }
-
-    private async Task DownloadPhotoContent()
-    {
-        var options = new ParallelOptions { MaxDegreeOfParallelism = 5 };
-        var cloudPhotos = Photos.Where(x => x.PhotoItemType == PhotoItemType.Cloud);
-        await Parallel.ForEachAsync(cloudPhotos, options, async (p, token) =>
-        {
-            var imageContent = await BuildImageSource(p.Id);
-            p.Image = imageContent ?? ImageSource.FromFile("dotnet_bot.png");
-        });
-    }
-
-    private async Task<ImageSource?> BuildImageSource(long photoId)
-    {
-        _logger.LogInformation("Downloading photo content for id {0}", photoId);
-        var imageStreamResponse = await _photoContentApi.GetPhoto(photoId);
-
-        if (!imageStreamResponse.IsSuccessStatusCode)
-        {
-            _logger.LogWarning("Photo content not available for id: {0}", photoId);
-            return null;
-        }
-        var stream = new MemoryStream();
-        await imageStreamResponse.Content!.CopyToAsync(stream);
-
-        var bytes = stream.ToArray();
-        return ImageSource.FromStream(() =>
-        {
-            _logger.LogInformation("Creating image source");
-            return new MemoryStream(bytes);
-        });
-
-    }
-
-    public async Task LoadFirstPage()
-    {
-        await LoadPhotos();
-    }
 }

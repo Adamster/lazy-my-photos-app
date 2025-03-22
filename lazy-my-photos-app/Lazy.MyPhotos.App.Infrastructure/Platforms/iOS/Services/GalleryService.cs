@@ -10,7 +10,12 @@ namespace Lazy.MyPhotos.App.Infrastructure.Platforms.iOS.Services;
 
 public class GalleryService(ILogger<GalleryService> logger) : IGalleryService
 {
-    public Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
+    public List<string> GetPhotoPaths()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize)
     {
         int skip = currentPage * pageSize;
         int take = pageSize;
@@ -36,12 +41,14 @@ public class GalleryService(ILogger<GalleryService> logger) : IGalleryService
             var options = new PHImageRequestOptions
             {
                 Synchronous = false, // Ensure images are loaded synchronously for this example
-                ResizeMode = PHImageRequestOptionsResizeMode.Fast,
+                ResizeMode = PHImageRequestOptionsResizeMode.Exact,
+                DeliveryMode = PHImageRequestOptionsDeliveryMode.HighQualityFormat
             };
 
             var imageAsset = asset as PHAsset;
+            
 
-            PHImageManager.DefaultManager.RequestImageForAsset(imageAsset!, new CGSize(300, 300), PHImageContentMode.AspectFit, options, (image, info) =>
+            PHImageManager.DefaultManager.RequestImageForAsset(imageAsset!, new CGSize(imageAsset.PixelWidth, imageAsset.PixelHeight), PHImageContentMode.Default, options, (image, info) =>
             {
                 if (image != null)
                 {
@@ -50,18 +57,14 @@ public class GalleryService(ILogger<GalleryService> logger) : IGalleryService
             });
         }
 
-
-            
-
-
-        var memoryStreams = new List<MemoryStream>();
+        var photoStreams = new List<MemoryStream>();
 
         foreach (UIImage uiImage in imageList)
         {
             var memoryStream = new MemoryStream(uiImage.AsJPEG()!.ToArray());
-            memoryStreams.Add(memoryStream);
+            photoStreams.Add(memoryStream);
         }
 
-        return Task.FromResult(memoryStreams);
+        return Task.FromResult(photoStreams);
     }
 }

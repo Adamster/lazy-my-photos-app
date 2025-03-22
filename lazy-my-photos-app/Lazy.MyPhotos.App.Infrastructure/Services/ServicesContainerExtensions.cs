@@ -10,6 +10,7 @@ public static class ServicesContainerExtensions
     {
         mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
         mauiAppBuilder.Services.AddSingleton<IUserService, UserService>();
+        mauiAppBuilder.Services.AddSingleton<IPhotoScanService, PhotoScanService>();
 
         return mauiAppBuilder;
     }

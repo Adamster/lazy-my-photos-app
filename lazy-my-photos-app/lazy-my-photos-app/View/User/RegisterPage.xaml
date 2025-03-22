@@ -3,8 +3,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:user1="clr-namespace:Lazy.MyPhotos.App.ViewModel.User"
+             xmlns:vms="clr-namespace:Lazy.MyPhotos.App.ViewModel.User"
              x:Class="Lazy.MyPhotos.App.View.User.RegisterPage"
+             x:DataType="vms:RegisterViewModel"
              Title="Register">
     <ContentPage.Resources>
         <Style x:Key="InvalidEntryStyle" TargetType="Entry">

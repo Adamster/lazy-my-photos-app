@@ -2,5 +2,5 @@
 
 public interface IGalleryService
 {
-    Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true);
+    Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize);
 }

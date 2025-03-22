@@ -9,7 +9,7 @@ namespace Lazy.MyPhotos.App.Infrastructure.Platforms.Windows
 {
     public class GalleryService : IGalleryService
     {
-        public Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize, bool isThumbnail = true)
+        public Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize)
         {
             throw new NotImplementedException();
         }
