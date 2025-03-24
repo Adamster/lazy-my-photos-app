@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-27" value="Gallery" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
-          <mxGeometry x="70" y="50" width="100" height="590" as="geometry" />
+          <mxGeometry x="70" y="50" width="100" height="740" as="geometry" />
         </mxCell>
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-42" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="Bm6jAi3F0s3E43qV5JZB-27">
           <mxGeometry x="45" y="110" width="10" height="80" as="geometry" />
@@ -21,7 +21,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-29" value="Photo scanner" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
-          <mxGeometry x="190" y="50" width="150" height="590" as="geometry" />
+          <mxGeometry x="190" y="50" width="150" height="750" as="geometry" />
         </mxCell>
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-38" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="Bm6jAi3F0s3E43qV5JZB-29">
           <mxGeometry x="65" y="70" width="10" height="40" as="geometry" />
@@ -49,10 +49,21 @@
           <mxGeometry x="70" y="300" width="10" height="80" as="geometry" />
         </mxCell>
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-30" value="&lt;div&gt;Metadata &lt;br&gt;&lt;/div&gt;&lt;div&gt;Extractor&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
-          <mxGeometry x="590" y="50" width="100" height="590" as="geometry" />
+          <mxGeometry x="590" y="50" width="100" height="740" as="geometry" />
+        </mxCell>
+        <mxCell id="Bm6jAi3F0s3E43qV5JZB-63" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="Bm6jAi3F0s3E43qV5JZB-30">
+          <mxGeometry x="45" y="570" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Bm6jAi3F0s3E43qV5JZB-64" value="Extract photo metadata" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" target="Bm6jAi3F0s3E43qV5JZB-63" parent="Bm6jAi3F0s3E43qV5JZB-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="50" y="550" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="80" y="580" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-31" value="&lt;div&gt;SQLite&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
-          <mxGeometry x="425" y="50" width="100" height="590" as="geometry" />
+          <mxGeometry x="425" y="50" width="100" height="740" as="geometry" />
         </mxCell>
         <mxCell id="Bm6jAi3F0s3E43qV5JZB-48" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=5;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
@@ -80,6 +91,24 @@
             <mxPoint x="270" y="520" as="sourcePoint" />
             <mxPoint x="330" y="520" as="targetPoint" />
             <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bm6jAi3F0s3E43qV5JZB-56" value="Save metadata" style="html=1;verticalAlign=bottom;startArrow=circle;startFill=1;endArrow=open;startSize=6;endSize=8;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="645" y="680" as="sourcePoint" />
+            <mxPoint x="470" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bm6jAi3F0s3E43qV5JZB-61" value="Grab original photo" style="html=1;verticalAlign=bottom;startArrow=circle;startFill=1;endArrow=open;startSize=6;endSize=8;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="640" y="560" as="sourcePoint" />
+            <mxPoint x="120" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bm6jAi3F0s3E43qV5JZB-62" value="Return original photo stream" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" edge="1" parent="1" target="Bm6jAi3F0s3E43qV5JZB-30">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="120" y="600" as="sourcePoint" />
+            <mxPoint x="180" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
