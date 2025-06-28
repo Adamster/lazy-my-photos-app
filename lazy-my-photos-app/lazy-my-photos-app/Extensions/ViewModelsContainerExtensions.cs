@@ -3,6 +3,8 @@
 using Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
 using Lazy.MyPhotos.App.ViewModel;
 using Lazy.MyPhotos.App.ViewModel.User;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Hosting;
 
 namespace Lazy.MyPhotos.App.Extensions;
 

@@ -1,5 +1,8 @@
 
 using Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Controls;
+
 
 namespace Lazy.MyPhotos.App.Modules.Photo.Mvvm.Views;
 

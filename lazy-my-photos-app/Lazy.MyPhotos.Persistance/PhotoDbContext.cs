@@ -1,15 +1,23 @@
-﻿using SQLite;
+﻿using Microsoft.Extensions.Logging;
+using SQLite;
 using System.Linq.Expressions;
 
 namespace Lazy.MyPhotos.Persistence;
 
-public class LazyPhotosDbContext
+public class PhotoDbContext
 {
+    private readonly ILogger<PhotoDbContext> _logger;
+
+    public PhotoDbContext(ILogger<PhotoDbContext> logger)
+    {
+        _logger = logger;
+    }
+
     private const string DbName = "lazy-photos.db3";
 
     private readonly string _dbPath = Path.Combine(FileSystem.AppDataDirectory, DbName);
 
-    private SQLiteAsyncConnection _connection;
+    private SQLiteAsyncConnection? _connection;
 
     private SQLiteAsyncConnection Database =>
         _connection ??= new SQLiteAsyncConnection(_dbPath,
@@ -56,13 +64,26 @@ public class LazyPhotosDbContext
 
     private async Task CreateTableIfNotExists<TTable>() where TTable : class, new()
     {
-        await Database.CreateTableAsync<TTable>();
+        _logger.LogInformation("Creating table {0} if not exists", typeof(TTable).Name);
+
+        var createTableResult = await Database.CreateTableAsync<TTable>();
+        _logger.LogInformation("database location: {0}", _dbPath);
+        _logger.LogInformation("Table {1} {0}", createTableResult, typeof(TTable).Name);
     }
 
     private async Task<TResult> Execute<TTable, TResult>(Func<Task<TResult>> action) where TTable : class, new()
     {
-        await CreateTableIfNotExists<TTable>();
-        return await action();
+        try
+        {
+            _logger.LogInformation("Executing action {0}", action.Method.Name);
+            await CreateTableIfNotExists<TTable>();
+            return await action();
+        }
+        catch (SQLiteException ex)
+        {
+            _logger.LogCritical(ex, "Error during database operation: {0}", ex.Message);
+            throw;
+        }
     }
 
     private async Task<AsyncTableQuery<TTable>> GetTableAsync<TTable>() where TTable : class, new()

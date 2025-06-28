@@ -1,5 +1,7 @@
 ﻿using Lazy.MyPhotos.App.View;
 using Lazy.MyPhotos.App.View.User;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Hosting;
 
 namespace Lazy.MyPhotos.App.Extensions;
 

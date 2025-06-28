@@ -1,6 +1,4 @@
-﻿using Android.Graphics;
-using Android.OS;
-using Android.Provider;
+﻿using Android.Provider;
 using Lazy.MyPhotos.Shared.Services.Interfaces;
 
 
@@ -11,6 +9,7 @@ public class GalleryService : IGalleryService
     public async Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize)
     {
         var photos = new List<MemoryStream>();
+       // return photos;
         var uri = MediaStore.Images.Media.ExternalContentUri;
 
         string[] projection =
@@ -72,33 +71,5 @@ public class GalleryService : IGalleryService
         var bytes = await File.ReadAllBytesAsync(imagePath);
 
         return new MemoryStream(bytes);
-    }
-
-    private Stream ScaleDownImageAndroid(Stream imageStream, int maxWidth, int maxHeight)
-    {
-        // Decode the image bounds without loading it into memory
-        BitmapFactory.Options options = new()
-        {
-            InJustDecodeBounds = true
-        };
-
-        // Calculate the scaling factor
-        int scaleFactor = Math.Min(options.OutWidth / maxWidth, options.OutHeight / maxHeight);
-
-        // Decode the image at the new size
-        options.InJustDecodeBounds = false;
-        options.InSampleSize = scaleFactor;
-
-        // Reset the stream position
-        imageStream.Position = 0;
-
-        Bitmap bitmap = BitmapFactory.DecodeStream(imageStream, null, options)!;
-
-        // Compress the scaled bitmap and return it as a Stream
-        MemoryStream outputStream = new MemoryStream();
-        bitmap.Compress(Bitmap.CompressFormat.Jpeg, 80, outputStream);
-        outputStream.Position = 0;
-        bitmap.Recycle();
-        return outputStream;
     }
 }

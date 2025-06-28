@@ -1,4 +1,7 @@
-﻿namespace Lazy.MyPhotos.App.Modules.Photo.Converters;
+﻿using Microsoft.Maui.Controls;
+using System;
+
+namespace Lazy.MyPhotos.App.Modules.Photo.Converters;
 
 public class NullToImageConverter : IValueConverter
 {

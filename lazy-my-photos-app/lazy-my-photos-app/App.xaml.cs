@@ -5,6 +5,7 @@ using Lazy.MyPhotos.App.Infrastructure.Services.Interfaces;
 using Lazy.MyPhotos.App.View;
 using Lazy.MyPhotos.App.ViewModel;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls;
 
 namespace Lazy.MyPhotos.App;
 

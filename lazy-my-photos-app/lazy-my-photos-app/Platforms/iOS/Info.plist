@@ -32,5 +32,11 @@
 	<string>com.companyname.lazymyphotosapp-1</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need access to your photos to let you upload images.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>TODO change this: photo sync background description</string>
+	</array>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>TODO change this: Not sure if this is required</string>
 </dict>
 </plist>

@@ -11,7 +11,7 @@ namespace Lazy.MyPhotos.App.Infrastructure.Platforms.Windows
     {
         public Task<List<MemoryStream>> GetPhotoStreams(int currentPage, int pageSize)
         {
-            throw new NotImplementedException();
+            return new Task<List<MemoryStream>>(() => new List<MemoryStream>());
         }
     }
 }

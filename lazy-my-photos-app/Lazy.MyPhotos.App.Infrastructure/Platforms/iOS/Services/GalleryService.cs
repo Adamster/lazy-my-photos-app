@@ -48,7 +48,7 @@ public class GalleryService(ILogger<GalleryService> logger) : IGalleryService
             var imageAsset = asset as PHAsset;
             
 
-            PHImageManager.DefaultManager.RequestImageForAsset(imageAsset!, new CGSize(imageAsset.PixelWidth, imageAsset.PixelHeight), PHImageContentMode.Default, options, (image, info) =>
+            PHImageManager.DefaultManager.RequestImageForAsset(imageAsset!, new CGSize(imageAsset!.PixelWidth, imageAsset.PixelHeight), PHImageContentMode.Default, options, (image, info) =>
             {
                 if (image != null)
                 {

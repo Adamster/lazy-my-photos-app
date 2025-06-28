@@ -9,6 +9,7 @@
     xmlns:memories="clr-namespace:Lazy.MyPhotos.App.View.Memories"
     xmlns:photos="clr-namespace:Lazy.MyPhotos.App.View.Photos"
     xmlns:viewModel="clr-namespace:Lazy.MyPhotos.App.ViewModel"
+    x:DataType="viewModel:AppShellViewModel"
     Shell.FlyoutBehavior="Disabled">
     <Shell.TitleView>
         <Grid>

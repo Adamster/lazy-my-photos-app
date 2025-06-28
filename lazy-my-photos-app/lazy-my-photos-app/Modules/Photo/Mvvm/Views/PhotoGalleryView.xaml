@@ -4,6 +4,7 @@
              xmlns:models="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Models"
              xmlns:converters="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Converters"
              xmlns:viewModels="clr-namespace:Lazy.MyPhotos.App.Modules.Photo.Mvvm.ViewModels"
+             x:DataType="viewModels:PhotoGalleryViewModel"
              x:Class="Lazy.MyPhotos.App.Modules.Photo.Mvvm.Views.PhotoGalleryView"
              >
     <ContentView.Resources>

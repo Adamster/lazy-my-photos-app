@@ -6,6 +6,9 @@ using Lazy.MyPhotos.App.Infrastructure.Services.Interfaces;
 using Lazy.MyPhotos.App.Modules.User.Mvvm.Pages.Modals;
 using Lazy.MyPhotos.App.Modules.User.Mvvm.ViewModel.Modals;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Controls;
+using System.Threading.Tasks;
 
 namespace Lazy.MyPhotos.App.ViewModel;
 

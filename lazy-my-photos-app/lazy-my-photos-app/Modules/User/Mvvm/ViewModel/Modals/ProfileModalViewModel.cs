@@ -12,7 +12,7 @@ namespace Lazy.MyPhotos.App.Modules.User.Mvvm.ViewModel.Modals
         [RelayCommand]
         public async Task Close()
         {
-            await Application.Current.MainPage.Navigation.PopModalAsync();
+            await Application.Current!.Windows[0].Navigation.PopModalAsync();
         }
 
         [RelayCommand]
